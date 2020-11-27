@@ -9,7 +9,7 @@
 * [Status](#status)
 
 ## General info
-Add more general information about project.
+The repository was initialized with the base code of Rasa's default startup project.
 
 ## Technologies
 * Python - version 3.7.9
