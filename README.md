@@ -42,6 +42,10 @@ $ git push origin $feature_name
 
 9. If project is not finished, go back to step 2.
 
+IMPORTANT:
+After opening your laptop to work on the project, make sure you pull the latest version of the master branch into your feature branch!
+This avoids many merge conflicts. To know how to do this read the 2nd point of https://geshan.com.np/blog/2016/04/3-simple-rules-for-less-or-no-git-conflicts/
+
 ## Technologies
 * Python - version 3.7.9
 * Rasa - version 2.1.1
