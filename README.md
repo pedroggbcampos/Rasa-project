@@ -3,6 +3,7 @@
 
 ## Table of contents
 * [General info](#general-info)
+* [Git workflow](#git-workflow)
 * [Technologies](#technologies)
 * [Setup](#setup)
 * [Features](#features)
@@ -10,6 +11,38 @@
 
 ## General info
 The repository was initialized with the base code of Rasa's default startup project.
+
+## Git workflow
+Feature branch workflow
+1. Clone project:
+```
+$ git clone git@example.com:project-name.git
+```
+2. Create branch with your feature:
+```
+$ git checkout -b $feature_name
+```
+3. Write code and then stage all tracked, modified files before the commit:
+```
+$ git add file, file, ...
+```
+or use 
+```
+$ git add *
+```
+4. Commit changes:
+```
+$ git commit -m "Add x feature and correct file y"
+```
+5. Push your branch:
+```
+$ git push origin $feature_name
+```
+6. Review your code on commits page.
+
+7. Create a merge request.
+
+8. Your team lead will review the code & merge it to the main branch.
 
 ## Technologies
 * Python - version 3.7.9
