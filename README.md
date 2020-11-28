@@ -15,7 +15,7 @@ The repository was initialized with the base code of Rasa's default startup proj
 * Python - version 3.7.9
 * Rasa - version 2.1.1
 
-## Setup
+## Setup (Linux)
 If you want to use with conda which is recommended, firstly install miniconda. See the [miniconda install instructions](https://docs.conda.io/en/latest/miniconda.html)
 ```
 $ conda create -n rasa-lab python=3.7
