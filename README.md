@@ -24,10 +24,6 @@ $ git checkout -b $feature_name
 ```
 3. Write code and then stage all tracked, modified files before the commit:
 ```
-$ git add file, file, ...
-```
-or use 
-```
 $ git add *
 ```
 4. Commit changes:
@@ -43,6 +39,8 @@ $ git push origin $feature_name
 7. Create a merge request.
 
 8. Your team lead will review the code & merge it to the main branch.
+
+9. If project is not finished, go back to step 2.
 
 ## Technologies
 * Python - version 3.7.9
