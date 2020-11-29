@@ -46,7 +46,7 @@ To know more about this workflow watch the video [Understanding the Feature Bran
 
 **IMPORTANT:**
 After opening your laptop to work on the project, make sure you pull the latest version of the master branch into your feature branch!
-This avoids many merge conflicts. To do this you do:
+Do this often before starting to work or whenever you think someone updated the master. This avoids many merge conflicts. To do this you do:
 ```
 $ git checkout master
 $ git fetch
@@ -56,8 +56,6 @@ $ git rebase master
 ```
 
 With these lines of code you get the latest master. Then you go back to your previous branch and rebase your branch with the latest master.
-
-
 To know more details on this refer to the [Guide for no merge conflicts](https://geshan.com.np/blog/2016/04/3-simple-rules-for-less-or-no-git-conflicts/)
 
 ## Technologies
