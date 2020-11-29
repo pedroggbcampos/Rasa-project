@@ -42,6 +42,8 @@ $ git push origin $feature_name
 
 9. If project is not finished, go back to step 2.
 
+To know more about this workflow watch the video [Understanding the Feature Branch Workflow](https://www.youtube.com/watch?v=JUpKDkb4Zhc&ab_channel=TechSnips)
+
 **IMPORTANT:**
 After opening your laptop to work on the project, make sure you pull the latest version of the master branch into your feature branch!
 This avoids many merge conflicts. To do this you do:
@@ -56,7 +58,7 @@ $ git rebase master
 With these lines of code you get the latest master. Then you go back to your previous branch and rebase your branch with the latest master.
 
 
-To know how to do this read the 2nd point of https://geshan.com.np/blog/2016/04/3-simple-rules-for-less-or-no-git-conflicts/
+To know more details on this refer to the [Guide for no merge conflicts](https://geshan.com.np/blog/2016/04/3-simple-rules-for-less-or-no-git-conflicts/)
 
 ## Technologies
 * Python - version 3.7.9
