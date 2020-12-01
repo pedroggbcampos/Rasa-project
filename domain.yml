@@ -8,6 +8,29 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - add_to_grocery_list
+
+entities:
+  - grocery_item
+  - number
+
+slots:
+  grocery_item:
+    - type: text
+    - influence_conversation: false
+  amount:
+    - type: float
+    - influence_conversation: false
+    - auto_fill: false
+
+forms:
+  grocery_form:
+    grocery_item:
+      - type: from_entity
+        entity: grocery_item
+    amount:
+      - type: from_entity
+        entity: number
 
 responses:
   utter_greet:
@@ -28,6 +51,12 @@ responses:
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+
+  utter_ask_amount:
+  - text: "How much do you want?"
+
+  utter_ask_grocery_item:
+  - text: "What do you want to add to your grocery list?"
 
 session_config:
   session_expiration_time: 60
