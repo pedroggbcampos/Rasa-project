@@ -13,15 +13,20 @@ intents:
 entities:
   - grocery_item
   - number
+  - unit
 
 slots:
   grocery_item:
-    - type: text
-    - influence_conversation: false
+    type: text
+    influence_conversation: false
   amount:
-    - type: float
-    - influence_conversation: false
-    - auto_fill: false
+    type: float
+    influence_conversation: false
+    auto_fill: false
+  unit:
+    type: text
+    influence_conversation: false
+    auto_fill: false
 
 forms:
   grocery_form:
@@ -31,6 +36,9 @@ forms:
     amount:
       - type: from_entity
         entity: number
+    unit:
+      - type: from_entity
+        entity: unit
 
 responses:
   utter_greet:
@@ -57,6 +65,9 @@ responses:
 
   utter_ask_grocery_item:
   - text: "What do you want to add to your grocery list?"
+
+  utter_grocery_item_added:
+  - text: "Okay, I added {grocery_item} to your grocery list"
 
 session_config:
   session_expiration_time: 60
