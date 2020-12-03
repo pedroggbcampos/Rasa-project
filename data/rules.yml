@@ -11,3 +11,13 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: End of grocery form
+  condition:
+  - active_loop: grocery_form
+  steps:
+  - action: grocery_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_grocery_item_added
