@@ -46,7 +46,7 @@ class ValidateGroceryForm(FormValidationAction):
             return {"grocery_item": slot_value}
         else:
             dispatcher.utter_message(
-                template="utter_not_in_stock", requested_grocery=slot_value
+                template="utter_not_valit_grocery_item", requested_grocery=slot_value
             )
             return {"grocery_item": None}
 
@@ -146,7 +146,7 @@ class TellGroceryList(Action):
 
         text = "The items in your grocery list are:\n"
         for item in grocery_list:
-            text += f"{item["amount"]} {item["unit"]} {item["grocery_item"]}\n"
+            text += item["amount"] + " " + item["unit"] + " " + item["grocery_item"] + "\n"
             text += " and "
         #remove last and
         text = text[:-5]
