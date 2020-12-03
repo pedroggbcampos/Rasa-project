@@ -27,6 +27,16 @@ slots:
     type: text
     influence_conversation: false
     auto_fill: false
+  grocert_list:
+    type: list
+    influence_conversation: false
+    auto_fill: false
+
+actions:
+  - validate_grocery_form
+  - action_grocery_item_added
+  - action_tell_grocery_list
+
 
 forms:
   grocery_form:
@@ -66,8 +76,17 @@ responses:
   utter_ask_grocery_item:
   - text: "What do you want to add to your grocery list?"
 
+  utter_not_valit_grocery_item:
+  - text: "Sorry, it's not possible to add {requested_grocery}"
+
+  utter_not_valid_unit:
+  - text: "Sorry, I don't understand {requested_unit}. Could you try using a different unit?"
+
+  utter_not_valid_amount:
+  - text: "Sorry, it is not possible to add a negative amount of food to your list."
+
   utter_grocery_item_added:
-  - text: "Okay, I added {grocery_item} to your grocery list"
+  - text: "Okay, I added {amount} {unit} {grocery_item} to your grocery list"
 
 session_config:
   session_expiration_time: 60
