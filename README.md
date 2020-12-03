@@ -71,6 +71,23 @@ $ rasa --version
 $ rasa init
 ```
 
+## Running the system with Rasa Shell (Linux)
+In order to run rasa shell you'll need three terminal windows open, two with different servers running and a third with the rasa shell. We should fix this so it's more convenient
+
+You need [docker](https://www.docker.com) installed. In one terminal, run:
+```
+$ docker run -p 8000:8000 rasa/duckling
+```
+In a second terminal, go to the project folder and run:
+```
+$ rasa run actions
+```
+In a third terminal, go to the project folder and run:
+```
+$ rasa train       (only needed the first time or after changes)
+$ rasa shell
+```
+
 ## Features
 List of ready features:
 * Awesome feature 1

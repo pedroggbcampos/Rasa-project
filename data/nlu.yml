@@ -90,3 +90,12 @@ nlu:
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
+
+- intent: add_to_grocery_list
+  examples: |
+    - Could you add [butter](grocery_item) to the shopping list?
+    - Could you add a [litre](unit) of [milk](grocery_item) to my grocery list?
+    - I need to buy [coffee](grocery_item), could you write that down?
+    - Add 500 grams of [butter](grocery_item) to my list
+    - Can you add [butter](grocery_item) and [milk](grocery_item) to the shopping list?
+    - Please put one [package](unit) of [coffe](grocery_item) in my shopping list
