@@ -153,3 +153,33 @@ class TellGroceryList(Action):
         # text += "Have a nice day!"
         dispatcher.utter_message(text=text)
         return []
+
+class CheckRecipeAvailability(Action):
+    def name(self) -> Text:
+        return "check_recipe_availability"
+
+    async def run(
+        self,
+        dispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+
+        food = next(tracker.get_latest_entity_values("recipe"), None)
+        print(food)
+        # Check if recipe exists (IN PROGRESS)
+
+        # rec = getRecipe()
+        # if rec:
+            # recipe = rec
+            # recipe_amount = getRecipeAmount()
+        # else if rec == null
+            # recipe = None
+            # recipe_amount = getRecipeAmount()
+        # for now...
+        recipe_amount = 1
+
+        return [
+            SlotSet("recipe_amount", recipe_amount),
+            SlotSet("recipe", food)
+        ]

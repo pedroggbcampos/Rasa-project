@@ -34,3 +34,17 @@ stories:
   - intent: add_to_grocery_list
   - action: grocery_form
   - active_loop: grocery_form
+
+- story: ask for existing recipe
+  steps:
+  - intent: request_recipe
+  - action: check_recipe_availability 
+  - action: utter_recipe_available
+
+- story: ask for non-existing recipe
+  steps:
+  - intent: request_recipe
+  - action: check_recipe_availability
+  - slot_was_set:
+    - recipe_amount: None
+  - action: utter_recipe_not_available

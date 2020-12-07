@@ -99,3 +99,10 @@ nlu:
     - Add 500 grams of [butter](grocery_item) to my list
     - Can you add [butter](grocery_item) and [milk](grocery_item) to the shopping list?
     - Please put one [package](unit) of [coffe](grocery_item) in my shopping list
+
+- intent: request_recipe
+  examples: |
+    - Could you give me the recipe for [lasagna](recipe)?
+    - Do you have the recipe for [apple crumble](recipe)?
+    - Do you know the recipe for [pesto pasta](recipe)?
+    - What is the recipe for [chickpea curry](recipe)?
