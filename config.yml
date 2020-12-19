@@ -28,7 +28,7 @@ pipeline:
     use_lookup_tables: True
     use_regexes: True
     "use_word_boundaries": True
-  - name: "SpacyEntityExtractor"
+  #- name: "SpacyEntityExtractor"
 
     # to use this run:
     # conda install -c conda-forge spacy (if you use conda)
