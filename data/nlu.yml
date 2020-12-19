@@ -102,12 +102,14 @@ nlu:
 
 - regex: recipe
   examples: |
-    - ^\s*[A-Za-z0-9]+(?:\s+[A-Za-z0-9]+)*\s*$
+    - ^\s*[A-Za-z]+(?:\s+[A-Za-z]+)*\s*$
 - intent: request_recipe
   examples: |
     - Could you give me the recipe for [lasagna](recipe)?
+    - Could you give me the recipe for [banana pie](recipe), please?
     - Do you have the recipe for [apple crumble](recipe)?
     - Do you know the recipe for [pesto pasta](recipe)?
     - What is the recipe for [chickpea curry](recipe)?
     - What's the recipe for [pizza](recipe)?
     - Give me a recipe for [scrambled eggs](recipe).
+    - Is there a recipe for [chocolate cake](recipe).

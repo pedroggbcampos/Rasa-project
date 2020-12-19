@@ -25,8 +25,7 @@ class ValidateGroceryForm(FormValidationAction):
     def name(self) -> Text:
         return "validate_grocery_form"
 
-    @staticmethod
-    def grocery_item_db() -> List[Text]:
+    @staticmethodValidateRecipeForm
         """Database of dummie groceries"""
         return GROCERY_ITEM_DB
 
