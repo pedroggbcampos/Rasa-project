@@ -7,16 +7,37 @@ pipeline:
 # If you'd like to customize it, uncomment and adjust the pipeline.
 # See https://rasa.com/docs/rasa/tuning-your-model for more information.
   - name: WhitespaceTokenizer
-  - name: RegexFeaturizer
+  - name: "RegexFeaturizer"
+    # Text will be processed with case sensitive as default
+    "case_sensitive": False
   - name: LexicalSyntacticFeaturizer
   - name: CountVectorsFeaturizer
   - name: CountVectorsFeaturizer
     analyzer: char_wb
     min_ngram: 1
     max_ngram: 4
-  - name: DucklingHTTPExtractor
+  - name: "SpacyNLP"
+    # language model to load
+    model: "en_core_web_md"
+    case_sensitive: False
+  - name: DucklingEntityExtractor
     url: "http://localhost:8000"
     dimensions: ["number", "volume"]
+  - name: RegexEntityExtractor
+    case_sensitive: False
+    use_lookup_tables: True
+    use_regexes: True
+    "use_word_boundaries": True
+  #- name: "SpacyEntityExtractor"
+
+    # to use this run:
+    # conda install -c conda-forge spacy (if you use conda)
+    # OR
+    # pip install -U pip setuptools wheel
+    # pip install -U spacy
+    # AND THEN
+    # python -m spacy download en_core_web_md                                                                                                                                                     
+    # python -m spacy link en_core_web_md en
   - name: DIETClassifier
     epochs: 100
   - name: EntitySynonymMapper

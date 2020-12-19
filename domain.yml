@@ -9,11 +9,13 @@ intents:
   - mood_unhappy
   - bot_challenge
   - add_to_grocery_list
+  - request_recipe
 
 entities:
   - grocery_item
   - number
   - unit
+  - recipe
 
 slots:
   grocery_item:
@@ -27,8 +29,16 @@ slots:
     type: text
     influence_conversation: false
     auto_fill: false
-  grocert_list:
+  grocery_list:
     type: list
+    influence_conversation: false
+    auto_fill: false
+  recipe:
+    type: text
+    influence_conversation: false
+    auto_fill: false
+  recipe_amount:
+    type: float
     influence_conversation: false
     auto_fill: false
 
@@ -36,7 +46,7 @@ actions:
   - validate_grocery_form
   - action_grocery_item_added
   - action_tell_grocery_list
-
+  - validate_recipe_form
 
 forms:
   grocery_form:
@@ -49,6 +59,10 @@ forms:
     unit:
       - type: from_entity
         entity: unit
+  recipe_form:
+    recipe:
+      - type: from_entity
+        entity: recipe
 
 responses:
   utter_greet:
@@ -87,6 +101,15 @@ responses:
 
   utter_grocery_item_added:
   - text: "Okay, I added {amount} {unit} {grocery_item} to your grocery list"
+
+  utter_ask_recipe:
+  - text: "Which recipe do you want?"
+
+  utter_recipe_available:
+  - text: "I found {recipe_amount} recipe(s) for {recipe}"
+
+  utter_recipe_not_available:
+  - text: "Sorry but I didn't find any recipes for {requested_recipe}"
 
 session_config:
   session_expiration_time: 60

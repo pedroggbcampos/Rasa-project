@@ -12,6 +12,7 @@ from rasa_sdk.types import DomainDict
 
 # Dummy grocery list
 GROCERY_ITEM_DB = ["milk", "butter", "coffee"]
+RECIPE_DB = ["lasagna"]
 UNIT_DB = ["litre", "package", "gram", "kilogram"]
 
 class ValidateGroceryForm(FormValidationAction):
@@ -81,6 +82,46 @@ class ValidateGroceryForm(FormValidationAction):
                 template="utter_not_valid_unit", requested_unit=slot_value
             )
             return {"unit": None}
+
+class ValidateRecipeForm(FormValidationAction):
+    """
+    Action used in Forms in order to validate the slots.
+    - If the recipe does not exist we reset that slot and ask the user again.
+    - If it exists it is validated
+    """
+
+    def name(self) -> Text:
+        return "validate_recipe_form"
+
+    @staticmethod
+    def recipe_db() -> List[Text]:
+        """Database of dummie recipes"""
+        return RECIPE_DB
+
+    def validate_recipe(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        print(slot_value)
+        if slot_value.lower() not in self.recipe_db():
+            dispatcher.utter_message(
+                template="utter_recipe_available", recipe_amount=2, recipe=slot_value
+            )
+            return [
+            SlotSet("recipe", slot_value),
+            SlotSet("recipe_amount", 2)
+            ]
+        else:
+            dispatcher.utter_message(
+                template="utter_recipe_not_available", requested_recipe=slot_value
+            )
+            return [
+            SlotSet("recipe", None),
+            SlotSet("recipe_amount", 0)
+            ]
 
 class AddItemsToGroceryList(Action):
     """
@@ -153,3 +194,35 @@ class TellGroceryList(Action):
         # text += "Have a nice day!"
         dispatcher.utter_message(text=text)
         return []
+'''
+class CheckRecipeAvailability(Action):
+    def name(self) -> Text:
+        return "check_recipe_availability"
+
+    async def run(
+        self,
+        dispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+
+        food = next(tracker.get_latest_entity_values("recipe"), None)
+        print(food)
+        print(slot_value)
+        # Check if recipe exists (IN PROGRESS)
+
+        # rec = getRecipe()
+        # if rec:
+            # recipe = rec
+            # recipe_amount = getRecipeAmount()
+        # else if rec == null
+            # recipe = None
+            # recipe_amount = getRecipeAmount()
+        # for now...
+        recipe_amount = 1
+
+        return [
+            SlotSet("recipe_amount", recipe_amount),
+            SlotSet("recipe", food)
+        ]
+'''

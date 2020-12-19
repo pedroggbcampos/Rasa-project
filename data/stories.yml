@@ -34,3 +34,9 @@ stories:
   - intent: add_to_grocery_list
   - action: grocery_form
   - active_loop: grocery_form
+
+- story: ask for recipe
+  steps:
+  - intent: request_recipe
+  - action: recipe_form
+  - active_loop: recipe_form
