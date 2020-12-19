@@ -15,7 +15,7 @@ entities:
   - grocery_item
   - number
   - unit
-  - recipe
+  - requested_recipe
 
 slots:
   grocery_item:
@@ -41,6 +41,10 @@ slots:
     type: float
     influence_conversation: false
     auto_fill: false
+  requested_recipe:
+    type: text
+    influence_conversation: false
+    auto_fill: false
 
 actions:
   - validate_grocery_form
@@ -60,9 +64,9 @@ forms:
       - type: from_entity
         entity: unit
   recipe_form:
-    recipe:
+    requested_recipe:
       - type: from_entity
-        entity: recipe
+        entity: requested_recipe
 
 responses:
   utter_greet:
@@ -90,7 +94,7 @@ responses:
   utter_ask_grocery_item:
   - text: "What do you want to add to your grocery list?"
 
-  utter_not_valit_grocery_item:
+  utter_not_valid_grocery_item:
   - text: "Sorry, it's not possible to add {requested_grocery}"
 
   utter_not_valid_unit:
@@ -109,7 +113,7 @@ responses:
   - text: "I found {recipe_amount} recipe(s) for {recipe}"
 
   utter_recipe_not_available:
-  - text: "Sorry but I didn't find any recipes for {requested_recipe}"
+  - text: "Sorry but I didn't find any recipes for {recipe}"
 
 session_config:
   session_expiration_time: 60

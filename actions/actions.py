@@ -9,6 +9,7 @@ from rasa_sdk import Action, Tracker, FormValidationAction
 from rasa_sdk.events import SlotSet
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
+import requests
 
 # Dummy grocery list
 GROCERY_ITEM_DB = ["milk", "butter", "coffee"]
@@ -47,7 +48,7 @@ class ValidateGroceryForm(FormValidationAction):
             return {"grocery_item": slot_value}
         else:
             dispatcher.utter_message(
-                template="utter_not_valit_grocery_item", requested_grocery=slot_value
+                template="utter_not_valid_grocery_item", requested_grocery=slot_value
             )
             return {"grocery_item": None}
 
@@ -98,7 +99,7 @@ class ValidateRecipeForm(FormValidationAction):
         """Database of dummie recipes"""
         return RECIPE_DB
 
-    def validate_recipe(
+    def validate_requested_recipe(
         self,
         slot_value: Any,
         dispatcher: CollectingDispatcher,
@@ -106,22 +107,35 @@ class ValidateRecipeForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
         print(slot_value)
-        if slot_value.lower() not in self.recipe_db():
+        url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search"
+
+        querystring = {"query":slot_value,"number":"10","type":"main course"}
+
+        headers = {
+            'x-rapidapi-key': "b792f6ab4fmshfdfe21f7bc6866dp145eedjsnb54fbbf7d1bc",
+            'x-rapidapi-host': "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+            }
+
+        response = requests.request("GET", url, headers=headers, params=querystring)
+
+        print(response.text)
+        print("\n\n")
+
+        response_dic = response.json()
+
+        print(response_dic["totalResults"])
+
+        n_results = response_dic["totalResults"]
+        if n_results > 0:
             dispatcher.utter_message(
-                template="utter_recipe_available", recipe_amount=2, recipe=slot_value
+                template="utter_recipe_available", recipe_amount=n_results, recipe=slot_value
             )
-            return [
-            SlotSet("recipe", slot_value),
-            SlotSet("recipe_amount", 2)
-            ]
+            return {"recipe": slot_value, "requested_recipe": None, "recipe_amount": n_results}
         else:
             dispatcher.utter_message(
-                template="utter_recipe_not_available", requested_recipe=slot_value
+                template="utter_recipe_not_available", recipe=slot_value
             )
-            return [
-            SlotSet("recipe", None),
-            SlotSet("recipe_amount", 0)
-            ]
+            return {"recipe": None, "requested_recipe": None, "recipe_amount": 0}
 
 class AddItemsToGroceryList(Action):
     """
