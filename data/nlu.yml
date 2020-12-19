@@ -100,16 +100,16 @@ nlu:
     - Can you add [butter](grocery_item) and [milk](grocery_item) to the shopping list?
     - Please put one [package](unit) of [coffe](grocery_item) in my shopping list
 
-- regex: recipe
+- regex: requested_recipe
   examples: |
     - ^\s*[A-Za-z]+(?:\s+[A-Za-z]+)*\s*$
 - intent: request_recipe
   examples: |
-    - Could you give me the recipe for [lasagna](recipe)?
-    - Could you give me the recipe for [banana pie](recipe), please?
-    - Do you have the recipe for [apple crumble](recipe)?
-    - Do you know the recipe for [pesto pasta](recipe)?
-    - What is the recipe for [chickpea curry](recipe)?
-    - What's the recipe for [pizza](recipe)?
-    - Give me a recipe for [scrambled eggs](recipe).
-    - Is there a recipe for [chocolate cake](recipe).
+    - Could you give me the recipe for [lasagna](requested_recipe)?
+    - Could you give me the recipe for [banana pie](requested_recipe), please?
+    - Do you have the recipe for [apple crumble](requested_recipe)?
+    - Do you know the recipe for [pesto pasta](requested_recipe)?
+    - What is the recipe for [chickpea curry](requested_recipe)?
+    - What's the recipe for [pizza](requested_recipe)?
+    - Give me a recipe for [scrambled eggs](requested_recipe).
+    - Is there a recipe for [chocolate cake](requested_recipe).
