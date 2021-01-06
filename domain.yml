@@ -5,9 +5,6 @@ intents:
   - goodbye
   - affirm
   - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
   - add_to_grocery_list
   - request_recipe
   - ask_for_grocery_list
@@ -71,23 +68,10 @@ forms:
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
+  - text: "Hello! What can I do for you today?"
 
   utter_goodbye:
   - text: "Bye"
-
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
 
   utter_ask_amount:
   - text: "How much do you want?"
