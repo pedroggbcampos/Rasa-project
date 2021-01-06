@@ -44,13 +44,14 @@ class ValidateGroceryForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
         print(slot_value)
-        if slot_value.lower() in self.grocery_item_db():
-            return {"grocery_item": slot_value}
-        else:
-            dispatcher.utter_message(
-                template="utter_not_valid_grocery_item", requested_grocery=slot_value
-            )
-            return {"grocery_item": None}
+        return {"grocery_item": slot_value}
+        # if slot_value.lower() in self.grocery_item_db():
+        #     return {"grocery_item": slot_value}
+        # else:
+        #     dispatcher.utter_message(
+        #         template="utter_not_valid_grocery_item", requested_grocery=slot_value
+        #     )
+        #     return {"grocery_item": None}
 
     def validate_amount(
         self,
