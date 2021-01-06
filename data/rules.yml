@@ -20,7 +20,7 @@ rules:
   - active_loop: null
   - slot_was_set:
     - requested_slot: null
-  - action: utter_grocery_item_added
+  - action: action_grocery_item_added
 
 - rule: End of recipe form
   condition:

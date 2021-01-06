@@ -14,7 +14,7 @@ import requests
 # Dummy grocery list
 GROCERY_ITEM_DB = ["milk", "butter", "coffee"]
 RECIPE_DB = ["lasagna"]
-UNIT_DB = ["litre", "package", "gram", "kilogram"]
+UNIT_DB = ["liter","liters", "package", "packages", "gram","grams", "kilogram","kilograms"]
 
 class ValidateGroceryForm(FormValidationAction):
     """
@@ -60,7 +60,7 @@ class ValidateGroceryForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
         print(slot_value)
-        if slot_value > 0:
+        if int(slot_value) > 0:
             return {"amount": slot_value}
         else:
             dispatcher.utter_message(
@@ -153,8 +153,10 @@ class AddItemsToGroceryList(Action):
     ) -> List[Dict[Text, Any]]:
 
         grocery_item = tracker.get_slot("grocery_item")
+        print("this is the grocery item {}".format(grocery_item))
         amount = tracker.get_slot("amount")
         unit = tracker.get_slot("unit")
+        print("this is the grocery unit {}".format(unit))
         grocery_list = tracker.get_slot("grocery_list")
         if grocery_list is None:
             grocery_list = []
@@ -162,13 +164,13 @@ class AddItemsToGroceryList(Action):
         if grocery_item is not None and amount is not None and unit is not None:
             grocery_list.append({"grocery_item": grocery_item, "amount": amount, "unit": unit})
 
-        if len(cart) > 0:
+        if len(grocery_list) > 0:
             dispatcher.utter_message(
                 template="utter_grocery_item_added", grocery_item=grocery_item, amount=amount, unit=unit
             )
         return [
             SlotSet("grocery_list", grocery_list),
-            SlotSet("fruit", None),
+            SlotSet("grocery_item", None),
             SlotSet("amount", None),
             SlotSet("unit", None)
         ]
@@ -186,7 +188,7 @@ class TellGroceryList(Action):
     ) -> List[Dict[Text, Any]]:
         grocery_list = tracker.get_slot("grocery_list")
 
-        if grocery_list is None or len(cart) == 0:
+        if grocery_list is None or len(grocery_list) == 0:
             dispatcher.utter_message(text="Your grocery list is currently empty")
             return []
 
@@ -201,42 +203,7 @@ class TellGroceryList(Action):
 
         text = "The items in your grocery list are:\n"
         for item in grocery_list:
-            text += item["amount"] + " " + item["unit"] + " " + item["grocery_item"] + "\n"
-            text += " and "
-        #remove last and
-        text = text[:-5]
+            text += str(item["amount"]) + " " + str(item["unit"]) + " of " + str(item["grocery_item"]) + "\n"
         # text += "Have a nice day!"
         dispatcher.utter_message(text=text)
         return []
-'''
-class CheckRecipeAvailability(Action):
-    def name(self) -> Text:
-        return "check_recipe_availability"
-
-    async def run(
-        self,
-        dispatcher,
-        tracker: Tracker,
-        domain: Dict[Text, Any],
-    ) -> List[Dict[Text, Any]]:
-
-        food = next(tracker.get_latest_entity_values("recipe"), None)
-        print(food)
-        print(slot_value)
-        # Check if recipe exists (IN PROGRESS)
-
-        # rec = getRecipe()
-        # if rec:
-            # recipe = rec
-            # recipe_amount = getRecipeAmount()
-        # else if rec == null
-            # recipe = None
-            # recipe_amount = getRecipeAmount()
-        # for now...
-        recipe_amount = 1
-
-        return [
-            SlotSet("recipe_amount", recipe_amount),
-            SlotSet("recipe", food)
-        ]
-'''

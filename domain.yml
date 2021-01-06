@@ -10,6 +10,7 @@ intents:
   - bot_challenge
   - add_to_grocery_list
   - request_recipe
+  - ask_for_grocery_list
 
 entities:
   - grocery_item
@@ -94,6 +95,9 @@ responses:
   utter_ask_grocery_item:
   - text: "What do you want to add to your grocery list?"
 
+  utter_ask_unit :
+  - text: "What is the unit?"
+
   utter_not_valid_grocery_item:
   - text: "Sorry, it's not possible to add {requested_grocery}"
 
@@ -104,7 +108,7 @@ responses:
   - text: "Sorry, it is not possible to add a negative amount of food to your list."
 
   utter_grocery_item_added:
-  - text: "Okay, I added {amount} {unit} {grocery_item} to your grocery list"
+  - text: "Okay, I added {amount} {unit} of {grocery_item} to your grocery list"
 
   utter_ask_recipe:
   - text: "Which recipe do you want?"

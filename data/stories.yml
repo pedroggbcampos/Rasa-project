@@ -40,3 +40,8 @@ stories:
   - intent: request_recipe
   - action: recipe_form
   - active_loop: recipe_form
+
+- story: show grocery list
+  steps:
+  - intent: ask_for_grocery_list
+  - action: action_tell_grocery_list

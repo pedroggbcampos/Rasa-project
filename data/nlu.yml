@@ -94,9 +94,11 @@ nlu:
 - intent: add_to_grocery_list
   examples: |
     - Could you add [butter](grocery_item) to the shopping list?
+    - Could you add [500](number) [grams](unit) of [butter](grocery_item) to my grocery list?
+    - Could you add [5](number) [kilograms](unit) of [butter](grocery_item) to my grocery list?
     - Could you add a [litre](unit) of [milk](grocery_item) to my grocery list?
     - I need to buy [coffee](grocery_item), could you write that down?
-    - Add 500 grams of [butter](grocery_item) to my list
+    - Add 500 [grams](unit) of [butter](grocery_item) to my list
     - Can you add [butter](grocery_item) and [milk](grocery_item) to the shopping list?
     - Please put one [package](unit) of [coffe](grocery_item) in my shopping list
 
@@ -113,3 +115,10 @@ nlu:
     - What's the recipe for [pizza](requested_recipe)?
     - Give me a recipe for [scrambled eggs](requested_recipe).
     - Is there a recipe for [chocolate cake](requested_recipe).
+
+- intent: ask_for_grocery_list
+  examples: |
+    - Can you show me my grocery list?
+    - What is in my grocery list?
+    - Show me my grocery List
+    - Show me my grocery list, please?
