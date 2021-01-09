@@ -33,7 +33,7 @@ class ValidateGroceryForm(FormValidationAction):
 
     @staticmethod
     def unit_db() -> List[Text]:
-        """Database of dummie groceries"""
+        """Database of dummie units"""
         return UNIT_DB
 
     def validate_grocery_item(
