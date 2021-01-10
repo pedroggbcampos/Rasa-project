@@ -119,28 +119,17 @@ nlu:
 
 - intent: add_to_grocery_list
   examples: |
-    - Could you add [butter](grocery_item) to the shopping list?
-    - Could you add [500](number) [grams](unit) of [sugar](grocery_item) to my grocery list?
-    - Could you add [5](number) [kilograms](unit) of [potatoes](grocery_item) to my grocery list?
-    - Could you add a [litre](unit) of [milk](grocery_item) to my grocery list?
-    - I need to buy [coffee](grocery_item), could you write that down?
-    - Add 500 [grams](unit) of [mushrooms](grocery_item) to my list
-    - Can you add [red peppers](grocery_item) and [soy beens](grocery_item) to the shopping list?
-    - Please put one [package](unit) of [wheat flour](grocery_item) in my shopping list
-    - Can you add two [decilitres](unit) of [heavy cream](grocery_item) to my grocery list?
-    - Add a [bag](unit) of [chips](grocery_item) to my grocery list
-    - Add [sausage](grocery item) to my shopping list
-    - Can you add [cottage cheese](grocery_item) to my grocery list?
-    - Please add [carrots](grocery_item) to my shopping list
-    - Can you please put [10](number) [bananas](grocery_item) in my grocery list?
-    - Add [ben and jerrys](grocery item) to my shopping list
-    - Could you add [soy sauce](grocery_item) to the shopping list?
-    - Could you add [unsalted almonds](grocery_item) to the shopping list?
-    - Could you add [25](number) [grams](unit) of [yeast](grocery_item) to my grocery list?
-    - Add one [bottle](unit) of [grape juice](grocery_item) to my list
-    - Can you add [12](number) [eggs](grocery_item) to my grocery list?
-    - Please add [diet coke](grocery_item) to my shopping list
-    - Add one [jar](unit) [rasberry jam](grocery_item) to my list
+    - Could you add butter to the shopping list?
+    - Could you add 500 grams of sugar to my grocery list?
+    - Could you add 5 kilograms of potatoes to my grocery list?
+    - Could you add a litre of milk to my grocery list?
+    - I need to buy coffee, could you write that down?
+    - Add 500 grams of mushrooms to my list
+    - Can you add red peppers and soy beens to the shopping list?
+    - Please put one package of wheat flour in my shopping list
+    - Can you add two decilitres of heavy cream to my grocery list?
+    - Add a bag of chips to my grocery list
+
 
 - regex: requested_recipe
   examples: |

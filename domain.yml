@@ -19,8 +19,11 @@ entities:
   - number
   - unit
   - requested_recipe
+  - quantity
 
 slots:
+  quantity:
+    type: any
   grocery_item:
     type: text
     influence_conversation: false
@@ -60,15 +63,9 @@ actions:
 
 forms:
   grocery_form:
-    grocery_item:
+    quantity:
       - type: from_entity
-        entity: grocery_item
-    amount:
-      - type: from_entity
-        entity: number
-    unit:
-      - type: from_entity
-        entity: unit
+        entity: quantity
   recipe_form:
     requested_recipe:
       - type: from_entity
@@ -108,7 +105,7 @@ responses:
   - text: "Sorry, it is not possible to add a negative amount of food to your list."
 
   utter_grocery_item_added:
-  - text: "Okay, I added {amount} {unit} of {grocery_item} to your grocery list"
+  - text: "Okay, I added {product} to your grocery list"
 
   utter_ask_recipe:
   - text: "Do you want another recipe?"
