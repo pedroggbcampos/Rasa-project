@@ -5,9 +5,13 @@ intents:
   - goodbye
   - affirm
   - deny
+  - mood_great
+  - mood_unhappy
   - add_to_grocery_list
   - request_recipe
   - ask_for_grocery_list
+  - ask_instructions
+  - ask_ingredients
 
 entities:
   - grocery_item
@@ -31,7 +35,7 @@ slots:
     type: list
     influence_conversation: false
     auto_fill: false
-  recipe:
+  id_recipe:
     type: text
     influence_conversation: false
     auto_fill: false
@@ -49,6 +53,8 @@ actions:
   - action_grocery_item_added
   - action_tell_grocery_list
   - validate_recipe_form
+  - action_give_instructions
+  - action_give_ingredients
 
 forms:
   grocery_form:
@@ -70,12 +76,24 @@ responses:
   utter_greet:
   - text: "Hello! What can I do for you today?"
 
+  utter_ask_ingredients_instructions:
+  - text: " Would you like the ingredients or the instructions?"
   utter_goodbye:
   - text: "Bye"
 
   utter_ask_amount:
   - text: "How much do you want?"
 
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+  
   utter_ask_grocery_item:
   - text: "What do you want to add to your grocery list?"
 
@@ -95,10 +113,10 @@ responses:
   - text: "Okay, I added {amount} {unit} of {grocery_item} to your grocery list"
 
   utter_ask_recipe:
-  - text: "Which recipe do you want?"
+  - text: "Do you want another recipe?"
 
   utter_recipe_available:
-  - text: "I found {recipe_amount} recipe(s) for {recipe}"
+  - text: "I found this recipe : {requested_recipe}"
 
   utter_recipe_not_available:
   - text: "Sorry but I didn't find any recipes for {recipe}"

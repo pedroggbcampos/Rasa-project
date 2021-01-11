@@ -25,3 +25,16 @@ rules:
   - active_loop: null
   - slot_was_set:
     - requested_slot: null
+  - action: utter_ask_ingredients_instructions
+
+- rule: ask ingredients
+  steps:
+  - action: utter_ask_ingredients_instructions
+  - intent: ask_ingredients
+  - action: action_give_ingredients
+
+- rule: ask instructions
+  steps:
+  - action: utter_ask_ingredients_instructions
+  - intent: ask_instructions
+  - action: action_give_instructions

@@ -17,6 +17,40 @@ nlu:
     - goodevening
     - good afternoon
 
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
 - intent: goodbye
   examples: |
     - good afternoon
@@ -30,6 +64,29 @@ nlu:
     - see you around
     - bye bye
     - see you later
+
+- intent: ask_ingredients
+  examples: |
+    - Can you give me the ingredients?
+    - Can you give me the ingredient?
+    - Can you give me the ingredient,please?
+    - Can you give me the ingredients,please?
+    - The ingredient?
+    - The ingredients?
+    - Ingredients?
+    - Ingredient?
+
+- intent: ask_instructions
+  examples: |
+    - Can you give me the instructions?
+    - Can you give me the instruction?
+    - Can you give me the instruction,please?
+    - Can you give me the instructions,please?
+    - The instruction?
+    - The instructions?
+    - instructions?
+    - instruction?
+
 
 - intent: affirm
   examples: |
