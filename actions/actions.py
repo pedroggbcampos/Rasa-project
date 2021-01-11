@@ -44,13 +44,14 @@ class ValidateGroceryForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
         print(slot_value)
-        if slot_value.lower() in self.grocery_item_db():
-            return {"grocery_item": slot_value}
-        else:
-            dispatcher.utter_message(
-                template="utter_not_valid_grocery_item", requested_grocery=slot_value
-            )
-            return {"grocery_item": None}
+        return {"grocery_item": slot_value}
+        # if slot_value.lower() in self.grocery_item_db():
+        #     return {"grocery_item": slot_value}
+        # else:
+        #     dispatcher.utter_message(
+        #         template="utter_not_valid_grocery_item", requested_grocery=slot_value
+        #     )
+        #     return {"grocery_item": None}
 
     def validate_amount(
         self,
@@ -127,15 +128,17 @@ class ValidateRecipeForm(FormValidationAction):
 
         n_results = response_dic["totalResults"]
         if n_results > 0:
+            name=response_dic["results"][0]["title"]
+            id=response_dic["results"][0]["id"]
             dispatcher.utter_message(
-                template="utter_recipe_available", recipe_amount=n_results, recipe=slot_value
+                template="utter_recipe_available", requested_recipe=name
             )
-            return {"recipe": slot_value, "requested_recipe": None, "recipe_amount": n_results}
+            return {"requested_recipe": name, "recipe_amount": n_results,"id_recipe": id}
         else:
             dispatcher.utter_message(
                 template="utter_recipe_not_available", recipe=slot_value
             )
-            return {"recipe": None, "requested_recipe": None, "recipe_amount": 0}
+            return {"requested_recipe": None, "recipe_amount": 0,"id_recipe": None}
 
 class AddItemsToGroceryList(Action):
     """
@@ -205,5 +208,78 @@ class TellGroceryList(Action):
         for item in grocery_list:
             text += str(item["amount"]) + " " + str(item["unit"]) + " of " + str(item["grocery_item"]) + "\n"
         # text += "Have a nice day!"
+        dispatcher.utter_message(text=text)
+        return []
+
+
+
+class give_ingredient(Action):
+    def name(self) -> Text:
+        return "action_give_ingredients"
+
+    async def run(
+        self,
+        dispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+        id = tracker.get_slot("id_recipe")
+        url_food = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/{}/information".format(id)
+        headers = {
+            'x-rapidapi-key': "b792f6ab4fmshfdfe21f7bc6866dp145eedjsnb54fbbf7d1bc",
+            'x-rapidapi-host': "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+            }
+        response = requests.request("GET", url_food, headers=headers)
+        response_recette = response.json()
+        text=""
+        for ingredient in response_recette["extendedIngredients"]:
+            if ingredient["unit"]=="":
+                text+=str(ingredient['amount'])+" "+str(ingredient["name"])+"\n"
+            else:
+                text+=str(round(ingredient['amount'],1))+" "+str(ingredient["unit"])+" of "+str(ingredient["name"])+"\n"
+
+            #text+=str(ingredient["original"])+ "\n"
+        # condensed_grosery_list = {}
+        # for item in grocery_list:
+        #     grocery_item = item["grocery_item"]
+        #     if grocery_item in condensed_grocery_list:
+        #         condensed_grocery_list[grocery_item] += item["amount"]
+        #     else:
+        #         condensed_grocery_list[grocery_item] = item["amount"]
+        #     condensed_grocery_list[grocery_item]
+
+        dispatcher.utter_message(text=text)
+        return []
+
+class give_instructions(Action):
+    def name(self) -> Text:
+        return "action_give_instructions"
+
+    async def run(
+        self,
+        dispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+        id = tracker.get_slot("id_recipe")
+        url_food = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/{}/information".format(id)
+        headers = {
+            'x-rapidapi-key': "b792f6ab4fmshfdfe21f7bc6866dp145eedjsnb54fbbf7d1bc",
+            'x-rapidapi-host': "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+            }
+        response = requests.request("GET", url_food, headers=headers)
+        response_recette = response.json()
+        text="Here is the instruction to follow : \n {}".format(response_recette["instructions"])
+
+            #text+=str(ingredient["original"])+ "\n"
+        # condensed_grosery_list = {}
+        # for item in grocery_list:
+        #     grocery_item = item["grocery_item"]
+        #     if grocery_item in condensed_grocery_list:
+        #         condensed_grocery_list[grocery_item] += item["amount"]
+        #     else:
+        #         condensed_grocery_list[grocery_item] = item["amount"]
+        #     condensed_grocery_list[grocery_item]
+
         dispatcher.utter_message(text=text)
         return []
