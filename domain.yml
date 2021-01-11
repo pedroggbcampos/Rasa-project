@@ -12,6 +12,7 @@ intents:
   - ask_for_grocery_list
   - ask_instructions
   - ask_ingredients
+  - mood_food_joke
 
 entities:
   - grocery_item
@@ -55,6 +56,7 @@ actions:
   - validate_recipe_form
   - action_give_instructions
   - action_give_ingredients
+  - action_food_joke
 
 forms:
   grocery_form:
@@ -84,16 +86,12 @@ responses:
   utter_ask_amount:
   - text: "How much do you want?"
 
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
   utter_did_that_help:
   - text: "Did that help you?"
 
   utter_happy:
   - text: "Great, carry on!"
-  
+
   utter_ask_grocery_item:
   - text: "What do you want to add to your grocery list?"
 
@@ -117,6 +115,9 @@ responses:
 
   utter_recipe_available:
   - text: "I found this recipe : {requested_recipe}"
+
+  utter_here_a_joke:
+  - text: "Here a food joke"
 
   utter_recipe_not_available:
   - text: "Sorry but I didn't find any recipes for {recipe}"
