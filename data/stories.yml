@@ -15,17 +15,26 @@ stories:
   - intent: greet
   - action: utter_greet
   - intent: mood_unhappy
-  - action: utter_cheer_up
+  - action: utter_here_a_joke
+  - action: action_food_joke
   - action: utter_did_that_help
   - intent: affirm
   - action: utter_happy
+
+- story: food_joke
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_food_joke
+  - action: action_food_joke
 
 - story: sad path 2
   steps:
   - intent: greet
   - action: utter_greet
   - intent: mood_unhappy
-  - action: utter_cheer_up
+  - action: utter_here_a_joke
+  - action: action_food_joke
   - action: utter_did_that_help
   - intent: deny
   - action: utter_goodbye

@@ -76,6 +76,16 @@ nlu:
     - Ingredients?
     - Ingredient?
 
+- intent: mood_food_joke
+  examples: |
+    - give me a joke
+    - make me laugh
+    - give me a joke, please
+    - give me a food joke
+    - food joke
+    - joke
+
+
 - intent: ask_instructions
   examples: |
     - Can you give me the instructions?

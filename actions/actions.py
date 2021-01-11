@@ -283,3 +283,25 @@ class give_instructions(Action):
 
         dispatcher.utter_message(text=text)
         return []
+
+
+class food_joke(Action):
+    def name(self) -> Text:
+        return "action_food_joke"
+
+    async def run(
+        self,
+        dispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+        url_joke = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/jokes/random"
+        headers = {
+            'x-rapidapi-key': "b792f6ab4fmshfdfe21f7bc6866dp145eedjsnb54fbbf7d1bc",
+            'x-rapidapi-host': "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+            }
+        response = requests.request("GET", url_joke, headers=headers)
+        joke=response.json()
+
+        dispatcher.utter_message(text=joke["text"])
+        return []
