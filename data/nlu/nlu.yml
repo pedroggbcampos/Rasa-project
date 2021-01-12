@@ -128,7 +128,7 @@ nlu:
     - Please put one [package](unit) of [wheat flour](grocery_item) in my shopping list
     - Can you add two [decilitres](unit) of [heavy cream](grocery_item) to my grocery list?
     - Add a [bag](unit) of [chips](grocery_item) to my grocery list
-    - Add [soy beans](grocery item) to my shopping list
+    - Add [soy beans](grocery_item) to my shopping list
 
 
 - regex: requested_recipe
