@@ -33,7 +33,7 @@ class ValidateGroceryForm(FormValidationAction):
 
     @staticmethod
     def unit_db() -> List[Text]:
-        """Database of dummie groceries"""
+        """Database of dummie units"""
         return UNIT_DB
 
     def validate_grocery_item(
@@ -53,37 +53,6 @@ class ValidateGroceryForm(FormValidationAction):
         #     )
         #     return {"grocery_item": None}
 
-    def validate_amount(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: DomainDict,
-    ) -> Dict[Text, Any]:
-        print(slot_value)
-        if int(slot_value) > 0:
-            return {"amount": slot_value}
-        else:
-            dispatcher.utter_message(
-                template="utter_not_valid_amount", requested_amount=slot_value
-            )
-            return {"amount": None}
-
-    def validate_unit(
-        self,
-        slot_value: Any,
-        dispatcher: CollectingDispatcher,
-        tracker: Tracker,
-        domain: DomainDict,
-    ) -> Dict[Text, Any]:
-        print(slot_value)
-        if slot_value.lower() in self.unit_db():
-            return {"unit": slot_value}
-        else:
-            dispatcher.utter_message(
-                template="utter_not_valid_unit", requested_unit=slot_value
-            )
-            return {"unit": None}
 
 class ValidateRecipeForm(FormValidationAction):
     """

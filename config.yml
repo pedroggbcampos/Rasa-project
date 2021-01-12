@@ -22,7 +22,7 @@ pipeline:
     case_sensitive: False
   - name: DucklingEntityExtractor
     url: "http://localhost:8000"
-    dimensions: ["number", "quantity"]
+    dimensions: ["number"]
   - name: RegexEntityExtractor
     case_sensitive: False
     use_lookup_tables: True

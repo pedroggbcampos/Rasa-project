@@ -24,6 +24,7 @@ slots:
   grocery_item:
     type: text
     influence_conversation: false
+    auto_fill: false
   amount:
     type: float
     influence_conversation: false
@@ -108,7 +109,7 @@ responses:
   - text: "Sorry, it is not possible to add a negative amount of food to your list."
 
   utter_grocery_item_added:
-  - text: "Okay, I added {amount} {unit} of {grocery_item} to your grocery list"
+  - text: "Okay, I added {grocery_item} to your grocery list"
 
   utter_ask_recipe:
   - text: "Do you want another recipe?"
