@@ -44,7 +44,7 @@ class ValidateGroceryForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
         print(slot_value)
-        return {"quantity": slot_value}
+        return {"grocery_item": slot_value}
         # if slot_value.lower() in self.grocery_item_db():
         #     return {"grocery_item": slot_value}
         # else:
@@ -124,23 +124,27 @@ class AddItemsToGroceryList(Action):
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
 
-        quantity = tracker.get_slot("quantity")
-        grocery_info = tracker.latest_message['entities'][0]['additional_info']
-        print("this is the grocery info{}".format(grocery_info))
+        grocery_item = tracker.get_slot("grocery_item")
+        print("this is the grocery item {}".format(grocery_item))
+        amount = tracker.get_slot("amount")
+        unit = tracker.get_slot("unit")
+        print("this is the grocery unit {}".format(unit))
         grocery_list = tracker.get_slot("grocery_list")
         if grocery_list is None:
             grocery_list = []
 
-        if quantity is not None:
-            grocery_list.append({"amount": grocery_info['value'], "unit": grocery_info['unit'], "grocery_item": grocery_info['product']})
+        if grocery_item is not None and amount is not None and unit is not None:
+            grocery_list.append({"grocery_item": grocery_item, "amount": amount, "unit": unit})
 
         if len(grocery_list) > 0:
             dispatcher.utter_message(
-                template="utter_grocery_item_added", product=grocery_info['product']
+                template="utter_grocery_item_added", grocery_item=grocery_item, amount=amount, unit=unit
             )
         return [
             SlotSet("grocery_list", grocery_list),
-            SlotSet("quantity", None),
+            SlotSet("grocery_item", None),
+            SlotSet("amount", None),
+            SlotSet("unit", None)
         ]
 
 
