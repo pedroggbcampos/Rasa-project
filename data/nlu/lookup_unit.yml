@@ -206,7 +206,6 @@ nlu:
       - clove
       - pound
       - shot
-      - cans
       - foot
       - rack
       - bag
@@ -217,7 +216,6 @@ nlu:
       - ball
       - head
       - clove
-      - cans
       - slices
       - feets
       - tsp
