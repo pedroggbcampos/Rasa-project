@@ -139,18 +139,18 @@ nlu:
 - intent: request_recipe
   examples: |
     - Could you give me the recipe for [chicharrones](requested_recipe)?
-    - Could you give me the recipe for [banana pie](requested_recipe), please?
-    - Do you have the recipe for [apple crumble](requested_recipe)?
-    - Do you know the recipe for [pesto pasta](requested_recipe)?
-    - What is the recipe for [chickpea curry](requested_recipe)?
-    - What's the recipe for [pizza](requested_recipe)?
-    - Give me a recipe for [scrambled eggs](requested_recipe).
-    - Is there a recipe for [chocolate cake](requested_recipe).
-    - Could you give me the recipe for [margherita pizza](requested_recipe)?
-    - Could you give me the recipe for [pizza dough](requested_recipe)?
-    - Could you give me the recipe for [Thai salad](requested_recipe)?
-    - Could you give me the recipe for [couscous](requested_recipe)?
-    - Could you give me the recipe for [butter chicken](requested_recipe)?
+    - Could you give me the recipe for [enhancer](requested_recipe), please?
+    - Do you have the recipe for [apricot margarine](requested_recipe)?
+    - Do you know the recipe for pesto pasta?
+    - What is the recipe for chickpea curry?
+    - What's the recipe for pizza?
+    - Give me a recipe for scrambled eggs.
+    - Is there a recipe for chocolate cake.
+    - Could you give me the recipe for margherita pizza?
+    - Could you give me the recipe for pizza dough?
+    - Could you give me the recipe for Thai salad?
+    - Could you give me the recipe for couscous?
+    - Could you give me the recipe for butter chicken?
 
 
 - regex: inform
