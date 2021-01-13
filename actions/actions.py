@@ -131,6 +131,13 @@ class AddItemsToGroceryList(Action):
         if grocery_list is None:
             grocery_list = []
 
+        if type(grocery_item) == list:
+            concatItems = ""
+            for item in grocery_item:
+                concatItems += item + " "
+
+            grocery_item = concatItems
+
         if grocery_item is not None and number is not None and unit is not None:
             grocery_list.append({"grocery_item": grocery_item, "amount": number, "unit": unit})
 
