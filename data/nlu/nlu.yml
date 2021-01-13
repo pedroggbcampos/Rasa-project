@@ -138,6 +138,33 @@ nlu:
     - Add a bag of chips to my grocery list
     - Add soy beans to my shopping list
 
+
+- intent: request_meal_plan
+  examples: |
+    - Can I have a meal plan?
+    - Can I get a meal plan?
+    - What's a good meal plan for me?
+    - Give me a meal plan.
+    - Could you give me a meal plan, please?
+    - Do you know a good meal plan for me?
+    - Can you give me a meal plan for the [day]{"entity": "time_frame"}?
+    - Can you give me a meal plan for the [week]{"entity": "time_frame"}?
+    - Can I have a [vegetarian]{"entity": "diet"} meal plan?
+    - Can I have a [vegan]{"entity": "diet"} meal plan?
+    - Can I have a [paleo]{"entity": "diet"} meal plan?
+    - Can I have a [daily]{"entity": "time_frame", "value": "day"} meal plan?
+    - Can I have a [weekly]{"entity": "time_frame", "value": "week"} meal plan?
+    - Could you give me a [vegetarian]{"entity": "diet"} meal plan for the [week]{"entity": "time_frame"}?
+    - Could you give me a [paleo]{"entity": "diet"} meal plan for the [day]{"entity": "time_frame"}?
+    - Can I have a [vegan]{"entity": "diet"} meal plan for the [day]{"entity": "time_frame"}?
+    - What's a good [weekly]{"entity": "time_frame", "value": "week"} [paleo]{"entity": "diet"} meal plan for me?
+
+
+
+
+- regex: requested_recipe
+  examples: |
+    - ^\s*[A-Za-z]+(?:\s+[A-Za-z]+)*\s*$
 - intent: request_recipe
   examples: |
     - Could you give me the recipe for [chicharrones](requested_recipe)?

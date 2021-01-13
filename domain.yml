@@ -9,6 +9,7 @@ intents:
   - mood_unhappy
   - add_to_grocery_list
   - request_recipe
+  - request_meal_plan
   - ask_for_grocery_list
   - ask_instructions
   - ask_ingredients
@@ -22,6 +23,8 @@ entities:
   - number
   - unit
   - requested_recipe
+  - time_frame
+  - diet
   - id_recipe
 
 slots:
@@ -63,12 +66,28 @@ slots:
     type: text
     influence_conversation: false
     auto_fill: false
+  time_frame:
+    type: text
+    influence_conversation: false
+    auto_fill: false
+    values:
+      - week
+      - day
+  diet:
+    type: text
+    influence_conversation: false
+    auto_fill: false
+    values:
+      - vegetarian
+      - vegan
+      - paleo
 
 actions:
   - validate_grocery_form
   - action_grocery_item_added
   - action_tell_grocery_list
   - validate_recipe_form
+  - validate_meal_plan_form
   - action_give_instructions
   - action_give_ingredients
   - action_food_joke
@@ -91,6 +110,10 @@ forms:
     requested_recipe:
       - type: from_entity
         entity: requested_recipe
+  meal_plan_form:
+    time_frame:
+      - type: from_entity
+        entity: time_frame
 
 responses:
   utter_greet:
@@ -140,6 +163,12 @@ responses:
 
   utter_number_recipe_available:
   - text: "I found {number_recipe} recipe(s) available for your request"
+
+  utter_ask_time_frame:
+  - text: "Do you want it for the day or for the week?"
+
+  utter_found_meal_plan:
+  - text: "Great! Here's the meal plan"
 
   utter_here_a_joke:
   - text: "Here a food joke"

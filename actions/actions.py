@@ -107,6 +107,7 @@ class ValidateRecipeForm(FormValidationAction):
             )
             return {"requested_recipe": None, "recipe_amount": 0}
 
+
 class AddItemsToGroceryList(Action):
     """
     Action that adds slot values grocery_item, amount and unit to grocery list
@@ -402,3 +403,43 @@ class SendGroceryListMail(Action):
             server.sendmail(sender_email, receiver_email, message)
         dispatcher.utter_message("I send your grocery list to the mail "+receiver_email)
         return []
+
+class ProvideMealPlan(Action):
+    def name(self) -> Text:
+        return "provide_meal_plan"
+
+    async def run(
+        self,
+        dispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+
+        url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/mealplans/generate"
+        timeframe=tracker.get_slot("time_frame")
+        diet=tracker.get_slot("diet")
+
+        if diet == None:
+            querystring = {"timeFrame":timeframe}
+        else:
+            querystring = {"timeFrame":timeframe, "diet":diet}
+
+
+        headers = {
+            'x-rapidapi-key': "b792f6ab4fmshfdfe21f7bc6866dp145eedjsnb54fbbf7d1bc",
+            'x-rapidapi-host': "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+            }
+
+        response = requests.request("GET", url, headers=headers, params=querystring)
+
+        print(response.text)
+        print("\n\n")
+
+        dispatcher.utter_message(
+            template="utter_found_meal_plan"
+        )
+
+        return [
+            SlotSet("diet", None),
+            SlotSet("time_frame", None)
+        ]

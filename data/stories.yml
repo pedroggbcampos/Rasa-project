@@ -68,3 +68,9 @@ stories:
   steps:
   - intent: ask_for_grocery_list
   - action: action_tell_grocery_list
+
+- story: ask for meal plan
+  steps:
+  - intent: request_meal_plan
+  - action: meal_plan_form
+  - active_loop: meal_plan_form

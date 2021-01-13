@@ -29,6 +29,16 @@ rules:
   - intent: inform
   - action: utter_ask_ingredients_instructions
 
+- rule: End of meal plan form
+  condition:
+  - active_loop: meal_plan_form
+  steps:
+  - action: meal_plan_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: provide_meal_plan
+
 - rule: ask ingredients
   steps:
   - action: utter_ask_ingredients_instructions
