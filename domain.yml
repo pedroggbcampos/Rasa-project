@@ -70,17 +70,10 @@ slots:
     type: text
     influence_conversation: false
     auto_fill: false
-    values:
-      - week
-      - day
   diet:
     type: text
     influence_conversation: false
     auto_fill: false
-    values:
-      - vegetarian
-      - vegan
-      - paleo
 
 actions:
   - validate_grocery_form
