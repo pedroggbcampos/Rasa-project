@@ -107,10 +107,9 @@ class ValidateRecipeForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
-        print(slot_value)
         url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search"
-
-        querystring = {"query":slot_value,"number":"10","type":"main course"}
+        print(slot_value)
+        querystring = {"query":slot_value,"number":"3","type":"main course"}
 
         headers = {
             'x-rapidapi-key': "b792f6ab4fmshfdfe21f7bc6866dp145eedjsnb54fbbf7d1bc",
@@ -125,20 +124,18 @@ class ValidateRecipeForm(FormValidationAction):
         response_dic = response.json()
 
         print(response_dic["totalResults"])
-
         n_results = response_dic["totalResults"]
+
         if n_results > 0:
-            name=response_dic["results"][0]["title"]
-            id=response_dic["results"][0]["id"]
             dispatcher.utter_message(
-                template="utter_recipe_available", requested_recipe=name
+                template="utter_number_recipe_available", number_recipe=len(response_dic["results"])
             )
-            return {"requested_recipe": name, "recipe_amount": n_results,"id_recipe": id}
+            return {"requested_recipe": slot_value,"recipe_amount":len(response_dic["results"])}
         else:
             dispatcher.utter_message(
                 template="utter_recipe_not_available", recipe=slot_value
             )
-            return {"requested_recipe": None, "recipe_amount": 0,"id_recipe": None}
+            return {"requested_recipe": None, "recipe_amount": 0}
 
 class AddItemsToGroceryList(Action):
     """
@@ -224,6 +221,7 @@ class give_ingredient(Action):
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
         id = tracker.get_slot("id_recipe")
+        print("here is the id".format(id))
         url_food = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/{}/information".format(id)
         headers = {
             'x-rapidapi-key': "b792f6ab4fmshfdfe21f7bc6866dp145eedjsnb54fbbf7d1bc",
@@ -231,6 +229,7 @@ class give_ingredient(Action):
             }
         response = requests.request("GET", url_food, headers=headers)
         response_recette = response.json()
+        print(response_recette)
         text=""
         for ingredient in response_recette["extendedIngredients"]:
             if ingredient["unit"]=="":
@@ -262,6 +261,7 @@ class give_instructions(Action):
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
         id = tracker.get_slot("id_recipe")
+        print("id result {}".format(id))
         url_food = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/{}/information".format(id)
         headers = {
             'x-rapidapi-key': "b792f6ab4fmshfdfe21f7bc6866dp145eedjsnb54fbbf7d1bc",
@@ -304,4 +304,50 @@ class food_joke(Action):
         joke=response.json()
 
         dispatcher.utter_message(text=joke["text"])
+        return []
+
+
+class choose_recipe(Action):
+    def name(self) -> Text:
+        return "action_choose_recipe"
+
+    async def run(
+        self,
+        dispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+        url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search"
+        slot_value=tracker.get_slot("requested_recipe")
+        querystring = {"query":slot_value,"number":"3","type":"main course"}
+
+        headers = {
+            'x-rapidapi-key': "b792f6ab4fmshfdfe21f7bc6866dp145eedjsnb54fbbf7d1bc",
+            'x-rapidapi-host': "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+            }
+
+        response = requests.request("GET", url, headers=headers, params=querystring)
+
+        print(response.text)
+        print("\n\n")
+
+        response_dic = response.json()
+
+        print(response_dic["totalResults"])
+        n_results = response_dic["totalResults"]
+        buttons = []
+        list_id=[]
+
+        if n_results > 0:
+            for i in range(len(response_dic["results"])):
+                name=response_dic["results"][i]["title"]
+                print(name)
+                id=response_dic["results"][i]["id"]
+                list_id.append(id)
+                payload="/inform{\"id_recipe\":\""+str(id)+"\"}"
+                print(payload)
+                buttons.append({"title": name, "payload": payload})
+            dispatcher.utter_message(text="Choose between these choice (Choose the name of the recipe)",buttons=buttons)
+
+            print("recipe result {}".format(tracker.get_slot("id_recipe")))
         return []

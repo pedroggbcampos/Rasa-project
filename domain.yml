@@ -13,12 +13,14 @@ intents:
   - ask_instructions
   - ask_ingredients
   - mood_food_joke
+  - inform
 
 entities:
   - grocery_item
   - number
   - unit
   - requested_recipe
+  - id_recipe
 
 slots:
   grocery_item:
@@ -39,9 +41,12 @@ slots:
   id_recipe:
     type: text
     influence_conversation: false
-    auto_fill: false
   recipe_amount:
     type: float
+    influence_conversation: false
+    auto_fill: false
+  recipe:
+    type: text
     influence_conversation: false
     auto_fill: false
   requested_recipe:
@@ -57,6 +62,7 @@ actions:
   - action_give_instructions
   - action_give_ingredients
   - action_food_joke
+  - action_choose_recipe
 
 forms:
   grocery_form:
@@ -113,8 +119,8 @@ responses:
   utter_ask_recipe:
   - text: "Do you want another recipe?"
 
-  utter_recipe_available:
-  - text: "I found this recipe : {requested_recipe}"
+  utter_number_recipe_available:
+  - text: "I found {number_recipe} recipe(s) available for your request"
 
   utter_here_a_joke:
   - text: "Here a food joke"

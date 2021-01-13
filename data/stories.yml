@@ -28,6 +28,11 @@ stories:
   - intent: mood_food_joke
   - action: action_food_joke
 
+- story: food_joke 2
+  steps:
+  - intent: mood_food_joke
+  - action: action_food_joke
+
 - story: sad path 2
   steps:
   - intent: greet
