@@ -138,14 +138,6 @@ nlu:
     - Add a bag of chips to my grocery list
     - Add soy beans to my shopping list
 
-
-
-
-
-
-- regex: requested_recipe
-  examples: |
-    - ^\s*[A-Za-z]+(?:\s+[A-Za-z]+)*\s*$
 - intent: request_recipe
   examples: |
     - Could you give me the recipe for [chicharrones](requested_recipe)?
