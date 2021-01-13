@@ -134,7 +134,8 @@ class AddItemsToGroceryList(Action):
         if type(grocery_item) == list:
             concatItems = ""
             for item in grocery_item:
-                concatItems += item + " "
+                if item not in concatItems:
+                    concatItems += item + " "
 
             grocery_item = concatItems
 
