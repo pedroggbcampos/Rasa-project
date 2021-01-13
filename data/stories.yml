@@ -10,6 +10,16 @@ stories:
   - intent: mood_great
   - action: utter_happy
 
+
+#- story: send by mail ## afaire
+#  steps:
+#  - intent: greet
+#  - action: utter_greet
+#  - intent: mood_great
+#  - action: utter_happy
+
+
+
 - story: sad path 1
   steps:
   - intent: greet

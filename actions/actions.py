@@ -217,7 +217,7 @@ class give_ingredient(Action):
         #     condensed_grocery_list[grocery_item]
 
         dispatcher.utter_message(text=text)
-        return []
+        return [SlotSet("grocery_list_from_request",[response_recette["extendedIngredients"]])]
 
 class give_instructions(Action):
     def name(self) -> Text:
@@ -320,3 +320,41 @@ class choose_recipe(Action):
 
             print("recipe result {}".format(tracker.get_slot("id_recipe")))
         return []
+
+
+class AddItemsToGroceryListFromRequest(Action):
+    """
+    Action that adds slot values grocery_item, amount and unit to grocery list
+    """
+
+    def name(self) -> Text:
+        return "action_add_on_grocery_list"
+
+    async def run(
+        self,
+        dispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+        grocery_list=tracker.get_slot("grocery_list")
+        grocery_list_from_request=tracker.get_slot("grocery_list_from_request")
+        grocery_list_from_request_json=grocery_list_from_request[0]
+        if grocery_list is None:
+            grocery_list = []
+        for ingredient in grocery_list_from_request_json:
+            grocery_item=ingredient["name"]
+            unit=ingredient["unit"]
+            amount=round(ingredient['amount'],1)
+            if grocery_item is not None and amount is not None and unit is not None:
+                grocery_list.append({"grocery_item": grocery_item, "amount": amount, "unit": unit})
+            if len(grocery_list) > 0: # a changer
+                dispatcher.utter_message(
+                    template="utter_grocery_item_added", grocery_item=grocery_item, amount=amount, unit=unit
+                )
+
+        return [
+            SlotSet("grocery_list", grocery_list),
+            SlotSet("grocery_item", None),
+            SlotSet("amount", None),
+            SlotSet("unit", None)
+        ]
