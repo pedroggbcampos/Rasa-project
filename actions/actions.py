@@ -126,24 +126,24 @@ class AddItemsToGroceryList(Action):
 
         grocery_item = tracker.get_slot("grocery_item")
         print("this is the grocery item {}".format(grocery_item))
-        amount = tracker.get_slot("amount")
+        number = tracker.get_slot("number")
         unit = tracker.get_slot("unit")
         print("this is the grocery unit {}".format(unit))
         grocery_list = tracker.get_slot("grocery_list")
         if grocery_list is None:
             grocery_list = []
 
-        if grocery_item is not None and amount is not None and unit is not None:
-            grocery_list.append({"grocery_item": grocery_item, "amount": amount, "unit": unit})
+        if grocery_item is not None and number is not None and unit is not None:
+            grocery_list.append({"grocery_item": grocery_item, "amount": number, "unit": unit})
 
         if len(grocery_list) > 0:
             dispatcher.utter_message(
-                template="utter_grocery_item_added", grocery_item=grocery_item, amount=amount, unit=unit
+                template="utter_grocery_item_added", grocery_item=grocery_item, number=number, unit=unit
             )
         return [
             SlotSet("grocery_list", grocery_list),
             SlotSet("grocery_item", None),
-            SlotSet("amount", None),
+            SlotSet("number", None),
             SlotSet("unit", None)
         ]
 
