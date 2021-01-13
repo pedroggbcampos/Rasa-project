@@ -14,6 +14,7 @@ intents:
   - ask_ingredients
   - mood_food_joke
   - inform
+  - send_per_mail
 
 
 entities:
@@ -28,6 +29,9 @@ slots:
     type: text
     influence_conversation: false
     auto_fill: false
+  email:
+    type: text
+    initial_value: "samyasmaa16@gmail.com"
   number:
     type: float
     influence_conversation: false
@@ -70,6 +74,7 @@ actions:
   - action_food_joke
   - action_choose_recipe
   - action_add_on_grocery_list
+  - action_send_grocerylist
 
 forms:
   grocery_form:
