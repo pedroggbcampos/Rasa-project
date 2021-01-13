@@ -11,6 +11,7 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 import requests
 import smtplib, ssl
+import json 
 
 # Dummy grocery list
 GROCERY_ITEM_DB = ["milk", "butter", "coffee"]
@@ -106,6 +107,37 @@ class ValidateRecipeForm(FormValidationAction):
                 template="utter_recipe_not_available", recipe=slot_value
             )
             return {"requested_recipe": None, "recipe_amount": 0}
+
+class ValidateMealPlanForm(FormValidationAction):
+    """
+    Action used in Forms in order to validate the slots.
+    - If the recipe does not exist we reset that slot and ask the user again.
+    - If it exists it is validated
+    """
+
+    def name(self) -> Text:
+        return "validate_meal_plan_form"
+
+    def validate_time_frame(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+
+        return {"time_frame": slot_value}
+
+    def validate_diet(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+
+        return {"diet": slot_value}
+
 
 class AddItemsToGroceryList(Action):
     """
@@ -401,4 +433,99 @@ class SendGroceryListMail(Action):
             server.login(sender_email, password)
             server.sendmail(sender_email, receiver_email, message)
         dispatcher.utter_message("I send your grocery list to the mail "+receiver_email)
+        return []
+
+class ProvideMealPlan(Action):
+    def name(self) -> Text:
+        return "provide_meal_plan"
+
+    async def run(
+        self,
+        dispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+
+        url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/mealplans/generate"
+        timeframe=tracker.get_slot("time_frame")
+        diet=tracker.get_slot("diet")
+        print("timeframe: " + str(timeframe) + "\n")
+        print("diet: " + str(diet) + "\n")
+
+        if diet == "omnivorous":
+            querystring = {"timeFrame":timeframe}
+        else:
+            querystring = {"timeFrame":timeframe, "diet":diet}
+
+
+        headers = {
+            'x-rapidapi-key': "b792f6ab4fmshfdfe21f7bc6866dp145eedjsnb54fbbf7d1bc",
+            'x-rapidapi-host': "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+            }
+
+        response = requests.request("GET", url, headers=headers, params=querystring)
+
+        print(response.text)
+        print("\n\n")
+
+        response_dic = response.json()
+
+        meal_plan = ""
+
+        if timeframe == "day":
+            meal_plan += "For breakfast I tought of "
+            breakfast = response_dic["meals"][0]["title"]
+            meal_plan += breakfast + "\n" 
+            meal_plan += "For lunch "
+            lunch = response_dic["meals"][1]["title"]
+            meal_plan += lunch + "\n" 
+            meal_plan += "And for dinner "
+            dinner = response_dic["meals"][2]["title"]
+            meal_plan += dinner + "\n" 
+        else:
+            day = 1
+            for meal in range(0, 21, 3):
+                meal_plan += "On day " + str(day) + "\n"
+                meal_plan += "For breakfast I tought of "
+                breakfast = response_dic["items"][meal]["value"]
+                breakfast = breakfast.replace("\\", "")
+                breakfast = json.loads(breakfast) 
+                meal_plan += breakfast["title"] + "\n" 
+                meal_plan += "For lunch "
+                lunch = response_dic["items"][meal + 1]["value"]
+                lunch = lunch.replace("\\", "")
+                lunch = json.loads(lunch) 
+                meal_plan += lunch["title"] + "\n" 
+                meal_plan += "And for dinner "
+                dinner = response_dic["items"][meal + 2]["value"]
+                dinner = dinner.replace("\\", "")
+                dinner = json.loads(dinner) 
+                meal_plan += dinner["title"] + "\n" 
+                meal_plan += "\n"
+                day +=1
+
+
+        dispatcher.utter_message(
+            template="utter_found_meal_plan"
+        )
+
+        return [
+            SlotSet("diet", "omnivorous"),
+            SlotSet("time_frame", None),
+            SlotSet("meal_plan", meal_plan)
+        ]
+
+class ReadMealPlan(Action):
+    def name(self) -> Text:
+        return "read_meal_plan"
+
+    async def run(
+        self,
+        dispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+        meal_plan = tracker.get_slot("meal_plan")
+        
+        dispatcher.utter_message(text=meal_plan)
         return []

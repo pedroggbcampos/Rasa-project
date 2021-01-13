@@ -1,3 +1,5 @@
+version: "2.0"
+
 nlu:
   - lookup: grocery_item
     examples: |
@@ -463,7 +465,7 @@ nlu:
       - Onion confit
       - chopped marjoram
       - Curtido
-      - vegetarian pho broth
+      - pho broth
       - chiles poblanos
       - radiatore
       - chopped scallions
@@ -475,7 +477,7 @@ nlu:
       - hothouse cucumber
       - Ricard
       - tightly packed
-      - vegetarian sausage
+      - sausage
       - small shallot
       - granulated garlic
       - Chinese sesame paste
@@ -2356,7 +2358,6 @@ nlu:
       - chicken legs and thighs
       - white or red wine vinegar
       - ' Chinese sweet wine'
-      - vegan
       - Italian parmesan cheese
       - "sifted confectioner\u2019s sugar "
       - "chilled ros\xE9"
@@ -3809,7 +3810,7 @@ nlu:
       - pastina
       - grated Gruyere
       - mushroom soup
-      - premade vegan pie crust
+      - pie crust
       - caperberries
       - coarse salt to taste
       - shad fillet
@@ -4127,7 +4128,7 @@ nlu:
       - Minced fresh chives
       - fresh kale or swiss chard
       - old-fashioned bitters
-      - vegan cane sugar
+      - cane sugar
       - Garlic Cloves
       - shao shing wine
       - chopped walnuts
@@ -4859,7 +4860,6 @@ nlu:
       - dried porchinis
       - orange
       - wax beans
-      - vegetarian pho broth recipe
       - (trimmed weight) beef cheeks
       - Chinese cinnamon
       - tuna
@@ -6419,7 +6419,7 @@ nlu:
       - "sweet Spanish piment\xF3n"
       - 'whole milk '
       - marjor
-      - vegan butter
+      - butter
       - navy beans
       - Bay Leaves
       - Pulp from 2 vanilla pods that have been halved lengthwise and scraped.
@@ -6446,7 +6446,7 @@ nlu:
       - Milk
       - bean-and-chili paste
       - fresh snow peas
-      - Vegan Parmesan
+      - Parmesan
       - zucchini flowers
       - peeled pineapple ring
       - medium to large potatoes
@@ -7400,7 +7400,7 @@ nlu:
       - extra things
       - minced parsley
       - canola
-      - vegan sausage
+      - sausage
       - kaffir lime leaves
       - swiss chard
       - 'basmati '
@@ -8408,7 +8408,7 @@ nlu:
       - bibb
       - beef tongue
       - Pistachio oil
-      - vegetarian oyster sauce or stir-fry sauce
+      - oyster sauce or stir-fry sauce
       - 2 tablespoons soy sauce
       - fresh green chili pepper
       - bratwursts
@@ -8789,7 +8789,7 @@ nlu:
       - chopped celery (2 to 3 ribs)
       - truffle juice
       - finely chopped fresh mint leaves
-      - vegan dark chocolate
+      - dark chocolate
       - granular yeast
       - zurra red wine syrup
       - 'For the cheese crackers:'
@@ -9959,7 +9959,7 @@ nlu:
       - ' ripe plums'
       - For garnish (optional)
       - Kaffir lime leaves
-      - vegan sharp cheddar cheese
+      - sharp cheddar cheese
       - corn Kernels
       - Sour cream and salmon caviar
       - bird chile
@@ -10783,7 +10783,7 @@ nlu:
       - pitted green
       - Cornish game hens
       - kamut flakes
-      - vegetarian oyster sauce
+      - oyster sauce
       - mustard oil
       - center-cut bluefish fillets
       - pomegranate concentrate
@@ -11474,7 +11474,7 @@ nlu:
       - tom yum
       - dark Puerto Rican rum
       - corn kernels from 6 to 8 ears corn
-      - vegan margarine
+      - margarine
       - whole grain macaroni shells
       - finely chopped parsley (optional)
       - whole star anise (or 2 whole cloves)
@@ -12893,7 +12893,7 @@ nlu:
       - parmigiano reggiano cheese
       - squash puree
       - Bibb or Romaine lettuce leaves
-      - vegan chocolate chips
+      - chocolate chips
       - chicken-breast
       - chopped or slivered fresh herbs
       - coarsely chopped cilantro
@@ -14482,7 +14482,7 @@ nlu:
       - Noilly Prat vermouth
       - ground nuts
       - Egg wash
-      - vegetarian broth
+      - vegetable broth
       - duck fat or vegetable oil
       - head Bibb lettuce
       - cherry preserves
