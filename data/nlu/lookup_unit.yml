@@ -1,249 +1,249 @@
 nlu:
-  lookup: unit
-  examples: |
-    - can
-    - slice
-    - feet
-    - tsp
-    - layer
-    - slice
-    - slab
-    - bottle
-    - jar
-    - milligram
-    - miligram
-    - gram
-    - kilogram
-    - kilo
-    - pound
-    - ounce
-    - pint
-    - cup
-    - tablespoon
-    - teaspoon
-    - dessert spoon
-    - deciliter
-    - milliliter
-    - liter
-    - gallon
-    - fluid ounce
-    - long
-    - bottle
-    - large
-    - glass
-    - medium-size
-    - pods
-    - inch long piece
-    - tablespoon
-    - thin slices
-    - large can
-    - steak
-    - batch
-    - 1/4-inch piece
-    - stalk
-    - bowl
-    - grind
-    - quart
-    - bag
-    - cup
-    - 2-ounce piece
-    - strip
-    - long
-    - glass
-    - bottle
-    - large
-    - ripe
-    - pinch
-    - cube
-    - thinly sliced
-    - small sprigs
-    - medium cloves
-    - 2-inch piece
-    - cube
-    - envelope
-    - quarts
-    - stems
-    - 7-inch
-    - heaping teaspoon
-    - tablespoon
-    - cups
-    - small handfuls
-    - ear
-    - portion
-    - hatch
-    - inch
-    - loaf
-    - ounce
-    - pint
-    - bunches
-    - heads
-    - medium-small
-    - inch
-    - milliliter
-    - Pinch
-    - medium-sized
-    - chopped
-    - hunk
-    - sliver
-    - stalk
-    - unit
-    - pinches
-    - basket
-    - racks
-    - dozen medium
-    - pat
-    - leafy sprig
-    - chunk
-    - bar
-    - link
-    - stem
-    - smoked
-    - tube
-    - knob
-    - chunks
-    - very large
-    - stick
-    - spiral
-    - thread
-    - bottle
-    - splash
-    - round
-    - sticks
-    - crushed
-    - half
-    - fluid ounce
-    - ounce container
-    - log
-    - cloves
-    - piece
-    - large clove
-    - Small piece
-    - jar
-    - small bunch
-    - slice
-    - thumb-size piece
-    - grams
-    - packet
-    - scant cups
-    - can
-    - bunch
-    - teaspoon
-    - bulb
-    - pints
-    - 12-ounce cans
-    - stick
-    - part
-    - small
-    - liter
-    - lobe
-    - pound
-    - fresh
-    - gallon
-    - length
-    - serving
-    - liters
-    - side
-    - package
-    - piece
-    - leaves
-    - scoop
-    - sprig
-    - inchlong piece
-    - large bunch
-    - shake
-    - medium
-    - Handful
-    - small leaves
-    - square
-    - 3-inch piece
-    - inchwide ball
-    - medium slice
-    - ribs
-    - small pinch
-    - large cloves
-    - bushy sprigs
-    - 4 inches long
-    - dozen
-    - plate
-    - dried
-    - sprigs
-    - thick slices
-    - drop
-    - teaspoons
-    - leaf
-    - 750-ml bottle
-    - sheet
-    - pair
-    - head
-    - cake
-    - branch
-    - small-to-medium
-    - dashes
-    - very small head
-    - gram
-    - bulbs
-    - segments
-    - handful
-    - very small
-    - fifth
-    - 12-ounce bottle
-    - pounds
-    - 8 to 9 ounces
-    - 14-ounce can
-    - 12-ounce bottles
-    - cluster
-    - vial
-    - pieces
-    - 10-pound piece
-    - bag
-    - package
-    - twist
-    - small chunk
-    - 3- to 4-pound
-    - inch-thick slice
-    - box
-    - inch
-    - wedge
-    - ounce
-    - clove
-    - pound
-    - shot
-    - cans
-    - foot
-    - rack
-    - bag
-    - dash
-    - segment
-    - fillet
-    - root
-    - ball
-    - head
-    - clove
-    - cans
-    - slices
-    - feets
-    - tsp
-    - layers
-    - slices
-    - slab
-    - bottles
-    - jars
-    - milligrams
-    - miligrams
-    - grams
-    - kilograms
-    - kilos
-    - pounds
-    - ounces
-    - pints
-    - cups
-    - tablespoons
-    - teaspoons
-    - dessert spoons
-    - deciliters
-    - milliliters
-    - liters
-    - gallons
-    - fluid ounces
-    - bottles
-    - packages
+  - lookup: unit
+    examples: |
+      - can
+      - slice
+      - feet
+      - tsp
+      - layer
+      - slice
+      - slab
+      - bottle
+      - jar
+      - milligram
+      - miligram
+      - gram
+      - kilogram
+      - kilo
+      - pound
+      - ounce
+      - pint
+      - cup
+      - tablespoon
+      - teaspoon
+      - dessert spoon
+      - deciliter
+      - milliliter
+      - liter
+      - gallon
+      - fluid ounce
+      - long
+      - bottle
+      - large
+      - glass
+      - medium-size
+      - pods
+      - inch long piece
+      - tablespoon
+      - thin slices
+      - large can
+      - steak
+      - batch
+      - 1/4-inch piece
+      - stalk
+      - bowl
+      - grind
+      - quart
+      - bag
+      - cup
+      - 2-ounce piece
+      - strip
+      - long
+      - glass
+      - bottle
+      - large
+      - ripe
+      - pinch
+      - cube
+      - thinly sliced
+      - small sprigs
+      - medium cloves
+      - 2-inch piece
+      - cube
+      - envelope
+      - quarts
+      - stems
+      - 7-inch
+      - heaping teaspoon
+      - tablespoon
+      - cups
+      - small handfuls
+      - ear
+      - portion
+      - hatch
+      - inch
+      - loaf
+      - ounce
+      - pint
+      - bunches
+      - heads
+      - medium-small
+      - inch
+      - milliliter
+      - Pinch
+      - medium-sized
+      - chopped
+      - hunk
+      - sliver
+      - stalk
+      - unit
+      - pinches
+      - basket
+      - racks
+      - dozen medium
+      - pat
+      - leafy sprig
+      - chunk
+      - bar
+      - link
+      - stem
+      - smoked
+      - tube
+      - knob
+      - chunks
+      - very large
+      - stick
+      - spiral
+      - thread
+      - bottle
+      - splash
+      - round
+      - sticks
+      - crushed
+      - half
+      - fluid ounce
+      - ounce container
+      - log
+      - cloves
+      - piece
+      - large clove
+      - Small piece
+      - jar
+      - small bunch
+      - slice
+      - thumb-size piece
+      - grams
+      - packet
+      - scant cups
+      - can
+      - bunch
+      - teaspoon
+      - bulb
+      - pints
+      - 12-ounce cans
+      - stick
+      - part
+      - small
+      - liter
+      - lobe
+      - pound
+      - fresh
+      - gallon
+      - length
+      - serving
+      - liters
+      - side
+      - package
+      - piece
+      - leaves
+      - scoop
+      - sprig
+      - inchlong piece
+      - large bunch
+      - shake
+      - medium
+      - Handful
+      - small leaves
+      - square
+      - 3-inch piece
+      - inchwide ball
+      - medium slice
+      - ribs
+      - small pinch
+      - large cloves
+      - bushy sprigs
+      - 4 inches long
+      - dozen
+      - plate
+      - dried
+      - sprigs
+      - thick slices
+      - drop
+      - teaspoons
+      - leaf
+      - 750-ml bottle
+      - sheet
+      - pair
+      - head
+      - cake
+      - branch
+      - small-to-medium
+      - dashes
+      - very small head
+      - gram
+      - bulbs
+      - segments
+      - handful
+      - very small
+      - fifth
+      - 12-ounce bottle
+      - pounds
+      - 8 to 9 ounces
+      - 14-ounce can
+      - 12-ounce bottles
+      - cluster
+      - vial
+      - pieces
+      - 10-pound piece
+      - bag
+      - package
+      - twist
+      - small chunk
+      - 3- to 4-pound
+      - inch-thick slice
+      - box
+      - inch
+      - wedge
+      - ounce
+      - clove
+      - pound
+      - shot
+      - cans
+      - foot
+      - rack
+      - bag
+      - dash
+      - segment
+      - fillet
+      - root
+      - ball
+      - head
+      - clove
+      - cans
+      - slices
+      - feets
+      - tsp
+      - layers
+      - slices
+      - slab
+      - bottles
+      - jars
+      - milligrams
+      - miligrams
+      - grams
+      - kilograms
+      - kilos
+      - pounds
+      - ounces
+      - pints
+      - cups
+      - tablespoons
+      - teaspoons
+      - dessert spoons
+      - deciliters
+      - milliliters
+      - liters
+      - gallons
+      - fluid ounces
+      - bottles
+      - packages
