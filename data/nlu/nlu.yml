@@ -148,7 +148,7 @@ nlu:
     - ^\s*[A-Za-z]+(?:\s+[A-Za-z]+)*\s*$
 - intent: request_recipe
   examples: |
-    - Could you give me the recipe for [lasagna](requested_recipe)?
+    - Could you give me the recipe for [chicharrones](requested_recipe)?
     - Could you give me the recipe for [banana pie](requested_recipe), please?
     - Do you have the recipe for [apple crumble](requested_recipe)?
     - Do you know the recipe for [pesto pasta](requested_recipe)?
