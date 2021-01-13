@@ -1,7 +1,6 @@
 nlu:
   - lookup: unit
     examples: |
-      - can
       - slice
       - feet
       - tsp
@@ -125,7 +124,6 @@ nlu:
       - grams
       - packet
       - scant cups
-      - can
       - bunch
       - teaspoon
       - bulb

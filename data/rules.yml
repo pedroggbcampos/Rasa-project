@@ -49,7 +49,7 @@ rules:
   - action: action_add_on_grocery_list
 
 
-- rule: from instructions ask ingredients Follow up 1 affirm
+- rule: from ingredients ask ingredients Follow up 1 affirm
   steps:
   - action: utter_want_ingredients
   - intent: affirm

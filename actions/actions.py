@@ -10,6 +10,7 @@ from rasa_sdk.events import SlotSet
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 import requests
+import smtplib, ssl
 
 # Dummy grocery list
 GROCERY_ITEM_DB = ["milk", "butter", "coffee"]
@@ -349,12 +350,47 @@ class AddItemsToGroceryListFromRequest(Action):
                 grocery_list.append({"grocery_item": grocery_item, "amount": amount, "unit": unit})
             if len(grocery_list) > 0: # a changer
                 dispatcher.utter_message(
-                    template="utter_grocery_item_added", grocery_item=grocery_item, amount=amount, unit=unit
+                    template="utter_grocery_item_added", grocery_item=grocery_item
                 )
 
         return [
             SlotSet("grocery_list", grocery_list),
             SlotSet("grocery_item", None),
-            SlotSet("amount", None),
+            SlotSet("number", None),
             SlotSet("unit", None)
         ]
+
+class SendGroceryListMail(Action):
+    """
+    Action that adds slot values grocery_item, amount and unit to grocery list
+    """
+
+    def name(self) -> Text:
+        return "action_send_grocerylist"
+
+    async def run(
+        self,
+        dispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+        grocery_list=tracker.get_slot("grocery_list")
+        email=tracker.get_slot("email")
+        port = 465  # For SSL
+        smtp_server = "smtp.gmail.com"
+        sender_email = "meal.planner.infos@gmail.com"  # Enter your address
+        receiver_email = email  # Enter receiver address
+        password = "mealplanner123"
+        SUBJECT= " Grocery list"
+        text = "The items in your grocery list are:\n"
+        for item in grocery_list:
+            text += str(item["amount"]) + " " + str(item["unit"]) + " of " + str(item["grocery_item"]) + "\n"
+
+        message = 'Subject: {}\n\n{}'.format(SUBJECT, text)
+
+        context = ssl.create_default_context()
+        with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+            server.login(sender_email, password)
+            server.sendmail(sender_email, receiver_email, message)
+        dispatcher.utter_message("I send your grocery list to the mail "+receiver_email)
+        return []

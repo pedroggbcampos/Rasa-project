@@ -34,6 +34,14 @@ nlu:
     - so good
     - so perfect
 
+- intent: send_per_mail
+  examples: |
+    - Can you send me my grocery list?
+    - send the grocery list, Please
+    - send it to me
+    - save the grocery list
+    - send the grocery list to my phone
+
 - intent: mood_unhappy
   examples: |
     - my day was horrible
