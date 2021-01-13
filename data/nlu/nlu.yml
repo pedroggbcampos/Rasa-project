@@ -119,16 +119,16 @@ nlu:
 
 - intent: add_to_grocery_list
   examples: |
-    - Could you add [smoked ham](grocery_item) to the shopping list?
-    - Could you add [500](number) [grams](unit) of [sugar](grocery_item) to my grocery list?
-    - Could you add [5](number) [kilograms](unit) of [Fennel](grocery_item) to my grocery list?
-    - Could you add a [litre](unit) of [milk](grocery_item) to my grocery list?
-    - Add 500 [grams](unit) of [Sesame Seeds](grocery_item) to my list
-    - Can you add [red peppers](grocery_item) to the shopping list?
-    - Please put one [package](unit) of [wheat flour](grocery_item) in my shopping list
-    - Can you add two [decilitres](unit) of [heavy cream](grocery_item) to my grocery list?
-    - Add a [bag](unit) of [chips](grocery_item) to my grocery list
-    - Add [soy beans](grocery_item) to my shopping list
+    - Could you add [absinthe](grocery_item) to the shopping list?
+    - Could you add 500 [handfulls](unit) of [drippings](grocery_item) to my grocery list?
+    - Could you add 5 [leafy sprig](unit) of [Fennel](grocery_item) to my grocery list?
+    - Could you add a [thread](unit) of [Kirsch](grocery_item) to my grocery list?
+    - Add 2 [thread](unit) of [gnocchetti](grocery_item) to my list
+    - Can you add [ficelle](grocery_item) to the shopping list?
+    - Please put two [12-ounce cans](unit) of [sultanas](grocery_item) in my shopping list
+    - Can you add two decilitres of heavy cream to my grocery list?
+    - Add a bag of chips to my grocery list
+    - Add soy beans to my shopping list
 
 
 - regex: requested_recipe
