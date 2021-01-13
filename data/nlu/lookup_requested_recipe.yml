@@ -1,7 +1,10 @@
 nlu:
   - lookup: requested_recipe
     examples: |
+<<<<<<< HEAD
       - butter chicken
+=======
+>>>>>>> 48c3a2a849308731c53afa2e487548b51eb30f37
       - yeast extract spread
       - tofu yogurt
       - prune puree
@@ -7221,6 +7224,10 @@ nlu:
       - donuts vanilla glazed
       - donuts
       - butterfly cakes
+<<<<<<< HEAD
+=======
+      - butter chicken
+>>>>>>> 48c3a2a849308731c53afa2e487548b51eb30f37
       - edible coffee treats
       - lite fruit cocktail
       - very cherry
