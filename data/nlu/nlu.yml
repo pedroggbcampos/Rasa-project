@@ -160,11 +160,6 @@ nlu:
     - What's a good [weekly]{"entity": "time_frame", "value": "week"} [paleo]{"entity": "diet"} meal plan for me?
 
 
-
-
-- regex: requested_recipe
-  examples: |
-    - ^\s*[A-Za-z]+(?:\s+[A-Za-z]+)*\s*$
 - intent: request_recipe
   examples: |
     - Could you give me the recipe for [chicharrones](requested_recipe)?
