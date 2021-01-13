@@ -131,6 +131,8 @@ nlu:
     - Add [soy beans](grocery_item) to my shopping list
 
 
+
+
 - regex: requested_recipe
   examples: |
     - ^\s*[A-Za-z]+(?:\s+[A-Za-z]+)*\s*$
@@ -144,6 +146,32 @@ nlu:
     - What's the recipe for [pizza](requested_recipe)?
     - Give me a recipe for [scrambled eggs](requested_recipe).
     - Is there a recipe for [chocolate cake](requested_recipe).
+    - Could you give me the recipe for [margherita pizza](requested_recipe)?
+    - Could you give me the recipe for [pizza dough](requested_recipe)?
+    - Could you give me the recipe for [Thai salad](requested_recipe)?
+    - Could you give me the recipe for [couscous](requested_recipe)?
+    - Could you give me the recipe for [butter chicken](requested_recipe)?
+
+
+- regex: inform
+  examples: |
+    - ^\s*[A-Za-z]+(?:\s+[A-Za-z]+)*\s*$
+- intent: inform
+  examples: |
+    - I want the [lasagna](requested_recipe)
+    - I want the [Breakfast pizza](requested_recipe)
+    - I want the [Ceasar Salad](requested_recipe)
+    - I want the [Avocado salad](requested_recipe)
+    - I want the [salad](requested_recipe)
+    - [lasagna](requested_recipe)
+    - [Breakfast pizza](requested_recipe)
+    - [Ceasar Salad](requested_recipe)
+    - [Avocado salad](requested_recipe)
+    - [salad](requested_recipe)
+    - i want this recipe
+    - i want the first recipe please
+
+
 
 - intent: ask_for_grocery_list
   examples: |
