@@ -34,9 +34,40 @@ rules:
   - action: utter_ask_ingredients_instructions
   - intent: ask_ingredients
   - action: action_give_ingredients
+  - action: utter_ask_add_list
+
+- rule: not add to grocery list
+  steps:
+  - action: utter_ask_add_list
+  - intent: deny
+  - action: utter_goodbye
+
+- rule: add grocery list
+  steps:
+  - action: utter_ask_add_list
+  - intent: affirm
+  - action: action_add_on_grocery_list
+
+
+- rule: from instructions ask ingredients Follow up 1 affirm
+  steps:
+  - action: utter_want_ingredients
+  - intent: affirm
+  - action: action_give_ingredients
+  - action: utter_ask_add_list
+
+
+- rule: ending
+  steps:
+  - action: action_give_instructions
+  - action: utter_want_ingredients
+  - intent: deny
+  - action: utter_goodbye
+
 
 - rule: ask instructions
   steps:
   - action: utter_ask_ingredients_instructions
   - intent: ask_instructions
   - action: action_give_instructions
+  - action: utter_want_ingredients

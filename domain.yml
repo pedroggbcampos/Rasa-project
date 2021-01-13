@@ -15,6 +15,7 @@ intents:
   - mood_food_joke
   - inform
 
+
 entities:
   - grocery_item
   - number
@@ -36,6 +37,10 @@ slots:
     influence_conversation: false
     auto_fill: false
   grocery_list:
+    type: list
+    influence_conversation: false
+    auto_fill: false
+  grocery_list_from_request:
     type: list
     influence_conversation: false
     auto_fill: false
@@ -64,6 +69,7 @@ actions:
   - action_give_ingredients
   - action_food_joke
   - action_choose_recipe
+  - action_add_on_grocery_list
 
 forms:
   grocery_form:
@@ -89,9 +95,16 @@ responses:
   - text: " Would you like the ingredients or the instructions?"
   utter_goodbye:
   - text: "Bye"
+  - text: "Have a nice day"
 
+  utter_ask_add_list:
+  - text: "Do you want to add theses ingredients to your grocery list?"
   utter_ask_number:
+
   - text: "How much do you want?"
+
+  utter_want_ingredients:
+  - text: "Do you want the ingredients of the recipe?"
 
   utter_did_that_help:
   - text: "Did that help you?"
@@ -127,7 +140,7 @@ responses:
   - text: "Here a food joke"
 
   utter_recipe_not_available:
-  - text: "Sorry but I didn't find any recipes for {recipe}"
+  - text: "Sorry but I didn't find any recipes for {recipe}, do you want another recipe?"
 
 session_config:
   session_expiration_time: 60
