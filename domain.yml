@@ -74,6 +74,11 @@ slots:
     type: text
     influence_conversation: false
     auto_fill: false
+    initial_value: "omnivorous"
+  meal_plan:
+    type: text
+    influence_conversation: false
+    auto_fill: false
 
 actions:
   - validate_grocery_form
@@ -87,6 +92,8 @@ actions:
   - action_choose_recipe
   - action_add_on_grocery_list
   - action_send_grocerylist
+  - provide_meal_plan
+  - read_meal_plan
 
 forms:
   grocery_form:
@@ -107,7 +114,9 @@ forms:
     time_frame:
       - type: from_entity
         entity: time_frame
-
+    diet:
+      - type: from_entity
+        entity: diet
 responses:
   utter_greet:
   - text: "Hello! What can I do for you today?"
@@ -161,7 +170,7 @@ responses:
   - text: "Do you want it for the day or for the week?"
 
   utter_found_meal_plan:
-  - text: "Great! Here's the meal plan"
+  - text: "I found you the perfect meal plan! Would you like me to read it to you?"
 
   utter_here_a_joke:
   - text: "Here a food joke"

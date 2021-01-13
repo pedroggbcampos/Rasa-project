@@ -16,10 +16,6 @@ pipeline:
     analyzer: char_wb
     min_ngram: 1
     max_ngram: 4
-  - name: "SpacyNLP"
-    # language model to load
-    model: "en_core_web_md"
-    case_sensitive: False
   - name: DucklingEntityExtractor
     url: "http://localhost:8000"
     dimensions: ["number"]
@@ -27,7 +23,6 @@ pipeline:
     case_sensitive: False
     use_lookup_tables: True
     use_regexes: True
-    "use_word_boundaries": True
   #- name: "SpacyEntityExtractor"
 
     # to use this run:

@@ -29,7 +29,7 @@ rules:
   - intent: inform
   - action: utter_ask_ingredients_instructions
 
-- rule: End of meal plan form
+- rule: End of meal plan form with restrictions
   condition:
   - active_loop: meal_plan_form
   steps:
@@ -39,6 +39,20 @@ rules:
     - requested_slot: null
   - action: provide_meal_plan
 
+# happy path
+- rule: read meal plan
+  steps:
+  - action: provide_meal_plan
+  - intent: affirm
+  - action: read_meal_plan
+
+# sad path
+- rule: don't read meal plan
+  steps:
+  - action: provide_meal_plan
+  - intent: deny
+  - action: utter_goodbye
+
 - rule: ask ingredients
   steps:
   - action: utter_ask_ingredients_instructions
@@ -46,18 +60,19 @@ rules:
   - action: action_give_ingredients
   - action: utter_ask_add_list
 
-- rule: not add to grocery list
-  steps:
-  - action: utter_ask_add_list
-  - intent: deny
-  - action: utter_goodbye
-
+# happy path
 - rule: add grocery list
   steps:
   - action: utter_ask_add_list
   - intent: affirm
   - action: action_add_on_grocery_list
 
+# sad path
+- rule: not add to grocery list
+  steps:
+  - action: utter_ask_add_list
+  - intent: deny
+  - action: utter_goodbye
 
 - rule: from ingredients ask ingredients Follow up 1 affirm
   steps:
