@@ -28,9 +28,9 @@ nlu:
     - gallon
     - fluid ounce
     - long
-    - glass
     - bottle
     - large
+    - glass
     - medium-size
     - pods
     - inch long piece
@@ -217,3 +217,33 @@ nlu:
     - fillet
     - root
     - ball
+    - head
+    - clove
+    - cans
+    - slices
+    - feets
+    - tsp
+    - layers
+    - slices
+    - slab
+    - bottles
+    - jars
+    - milligrams
+    - miligrams
+    - grams
+    - kilograms
+    - kilos
+    - pounds
+    - ounces
+    - pints
+    - cups
+    - tablespoons
+    - teaspoons
+    - dessert spoons
+    - deciliters
+    - milliliters
+    - liters
+    - gallons
+    - fluid ounces
+    - bottles
+    - packages
