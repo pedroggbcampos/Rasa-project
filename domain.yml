@@ -28,7 +28,7 @@ slots:
     type: text
     influence_conversation: false
     auto_fill: false
-  amount:
+  number:
     type: float
     influence_conversation: false
     auto_fill: false
@@ -76,7 +76,7 @@ forms:
     grocery_item:
       - type: from_entity
         entity: grocery_item
-    amount:
+    number:
       - type: from_entity
         entity: number
     unit:
@@ -99,7 +99,8 @@ responses:
 
   utter_ask_add_list:
   - text: "Do you want to add theses ingredients to your grocery list?"
-  utter_ask_amount:
+  utter_ask_number:
+
   - text: "How much do you want?"
 
   utter_want_ingredients:
@@ -123,7 +124,7 @@ responses:
   utter_not_valid_unit:
   - text: "Sorry, I don't understand {requested_unit}. Could you try using a different unit?"
 
-  utter_not_valid_amount:
+  utter_not_valid_number:
   - text: "Sorry, it is not possible to add a negative amount of food to your list."
 
   utter_grocery_item_added:
