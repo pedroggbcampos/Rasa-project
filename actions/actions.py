@@ -11,7 +11,7 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.types import DomainDict
 import requests
 import smtplib, ssl
-import json 
+import json
 
 # Dummy grocery list
 GROCERY_ITEM_DB = ["milk", "butter", "coffee"]
@@ -200,7 +200,7 @@ class AddItemsToGroceryList(Action):
             SlotSet("grocery_list", grocery_list),
             SlotSet("grocery_item", None),
             SlotSet("number", None),
-            SlotSet("unit", None)
+            SlotSet("unit", "")
         ]
 
 
@@ -493,13 +493,13 @@ class ProvideMealPlan(Action):
         if timeframe == "day":
             meal_plan += "For breakfast I tought of "
             breakfast = response_dic["meals"][0]["title"]
-            meal_plan += breakfast + "\n" 
+            meal_plan += breakfast + "\n"
             meal_plan += "For lunch "
             lunch = response_dic["meals"][1]["title"]
-            meal_plan += lunch + "\n" 
+            meal_plan += lunch + "\n"
             meal_plan += "And for dinner "
             dinner = response_dic["meals"][2]["title"]
-            meal_plan += dinner + "\n" 
+            meal_plan += dinner + "\n"
         else:
             day = 1
             for meal in range(0, 21, 3):
@@ -507,18 +507,18 @@ class ProvideMealPlan(Action):
                 meal_plan += "For breakfast I tought of "
                 breakfast = response_dic["items"][meal]["value"]
                 breakfast = breakfast.replace("\\", "")
-                breakfast = json.loads(breakfast) 
-                meal_plan += breakfast["title"] + "\n" 
+                breakfast = json.loads(breakfast)
+                meal_plan += breakfast["title"] + "\n"
                 meal_plan += "For lunch "
                 lunch = response_dic["items"][meal + 1]["value"]
                 lunch = lunch.replace("\\", "")
-                lunch = json.loads(lunch) 
-                meal_plan += lunch["title"] + "\n" 
+                lunch = json.loads(lunch)
+                meal_plan += lunch["title"] + "\n"
                 meal_plan += "And for dinner "
                 dinner = response_dic["items"][meal + 2]["value"]
                 dinner = dinner.replace("\\", "")
-                dinner = json.loads(dinner) 
-                meal_plan += dinner["title"] + "\n" 
+                dinner = json.loads(dinner)
+                meal_plan += dinner["title"] + "\n"
                 meal_plan += "\n"
                 day +=1
 
@@ -544,7 +544,7 @@ class ReadMealPlan(Action):
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
         meal_plan = tracker.get_slot("meal_plan")
-        
+
         dispatcher.utter_message(text=meal_plan)
         return []
 
@@ -563,7 +563,7 @@ class InformCalories(Action):
         slot_value=tracker.get_slot("recipe_calories")
         if isinstance(slot_value, list):
             slot_value = slot_value[0]
-            
+
         querystring = {"query":slot_value,"number":"1","type":"main course"}
 
         headers = {
