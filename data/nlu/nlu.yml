@@ -206,6 +206,8 @@ nlu:
     - Show me my grocery List
     - Show me my grocery list, please?
     - What's on my grocery list?
+    - Can you tell me my grocery list?
+    - Can you read my grocery list to me? 
 
 - intent: ask_for_calories
   examples: |
