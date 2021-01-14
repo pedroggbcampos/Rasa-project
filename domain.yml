@@ -12,6 +12,7 @@ intents:
   - request_meal_plan
   - ask_for_grocery_list
   - ask_instructions
+  - ask_for_calories
   - ask_ingredients
   - mood_food_joke
   - inform
@@ -43,6 +44,7 @@ slots:
     type: text
     influence_conversation: false
     auto_fill: false
+    initial_value: ""
   grocery_list:
     type: list
     influence_conversation: false
@@ -79,11 +81,16 @@ slots:
     type: text
     influence_conversation: false
     auto_fill: false
+  recipe_calories:
+    type: text
+    influence_conversation: false
+    auto_fill: false
 
 actions:
   - validate_grocery_form
   - action_grocery_item_added
   - action_tell_grocery_list
+  - inform_calories
   - validate_recipe_form
   - validate_meal_plan_form
   - action_give_instructions
@@ -110,6 +117,10 @@ forms:
     requested_recipe:
       - type: from_entity
         entity: requested_recipe
+  calories_form:
+    recipe_calories:
+      - type: from_entity
+        entity: requested_recipe
   meal_plan_form:
     time_frame:
       - type: from_entity
@@ -123,6 +134,7 @@ responses:
 
   utter_ask_ingredients_instructions:
   - text: " Would you like the ingredients or the instructions?"
+
   utter_goodbye:
   - text: "Bye"
   - text: "Have a nice day"
@@ -163,6 +175,9 @@ responses:
   utter_ask_recipe:
   - text: "Do you want another recipe?"
 
+  utter_ask_recipe_calories:
+  - text: "For which recipe would you like to know the calories?"
+
   utter_number_recipe_available:
   - text: "I found {number_recipe} recipe(s) available for your request"
 
@@ -177,6 +192,12 @@ responses:
 
   utter_recipe_not_available:
   - text: "Sorry but I didn't find any recipes for {recipe}, do you want another recipe?"
+
+  utter_please_rephrase:
+  - text: I'm sorry, I didn't quite understand that. Could you rephrase?
+
+  utter_default:
+  - text: Sorry I didn't get that. Can you rephrase?
 
 session_config:
   session_expiration_time: 60
