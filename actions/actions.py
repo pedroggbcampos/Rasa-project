@@ -79,6 +79,10 @@ class ValidateRecipeForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
         url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search"
+
+        if type(slot_value) == list:
+            slot_value = slot_value[0]
+
         print(slot_value)
         querystring = {"query":slot_value,"number":"3","type":"main course"}
 
