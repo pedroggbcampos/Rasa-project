@@ -231,7 +231,7 @@ class TellGroceryList(Action):
 
         text = "The items in your grocery list are:\n"
         for item in grocery_list:
-            text += str(item["amount"]) + " " + str(item["unit"]) + " of " + str(item["grocery_item"]) + "\n"
+            text += str(item["amount"]) + " " + str(item["unit"]) + " " + str(item["grocery_item"]) + "\n"
         # text += "Have a nice day!"
         dispatcher.utter_message(text=text)
         return []
