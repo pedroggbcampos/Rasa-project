@@ -134,7 +134,9 @@ nlu:
     - Add 2 [thread](unit) of [gnocchetti](grocery_item) to my list
     - Can you add [ficelle](grocery_item) to the shopping list?
     - Please put two [12-ounce cans](unit) of [sultanas](grocery_item) in my shopping list
-    - Can you add two decilitres of heavy cream to my grocery list?
+    - Can you add two [decilitres](unit) of heavy cream to my grocery list?
+    - Can you add 2 [kg]{"entity": "unit", "value": "kilograms"} of carrots to my grocery list?
+    - Can you add 2 [g]{"entity": "unit", "value": "grams"} of carrots to my grocery list?
     - Add a bag of chips to my grocery list
     - Add soy beans to my shopping list
 
@@ -165,16 +167,16 @@ nlu:
     - Could you give me the recipe for [chicharrones](requested_recipe)?
     - Could you give me the recipe for [enhancer](requested_recipe), please?
     - Do you have the recipe for [apricot margarine](requested_recipe)?
-    - Do you know the recipe for pesto pasta?
-    - What is the recipe for chickpea curry?
-    - What's the recipe for pizza?
-    - Give me a recipe for scrambled eggs.
-    - Is there a recipe for chocolate cake.
-    - Could you give me the recipe for margherita pizza?
-    - Could you give me the recipe for pizza dough?
-    - Could you give me the recipe for Thai salad?
-    - Could you give me the recipe for couscous?
-    - Could you give me the recipe for butter chicken?
+    - Do you know the recipe for [pesto pasta](requested_recipe)?
+    - What is the recipe for [chickpea curry](requested_recipe)?
+    - What's the recipe for [pizza](requested_recipe)?
+    - Give me a recipe for [scrambled eggs](requested_recipe).
+    - Is there a recipe for [chocolate cake](requested_recipe).
+    - Could you give me the recipe for [margherita pizza](requested_recipe)?
+    - Could you give me the recipe for [pizza dough](requested_recipe)?
+    - Could you give me the recipe for [Thai salad](requested_recipe)?
+    - Could you give me the recipe for [couscous](requested_recipe)?
+    - Could you give me the recipe for [butter chicken](requested_recipe)?
 
 
 - regex: inform
@@ -203,3 +205,12 @@ nlu:
     - What is in my grocery list?
     - Show me my grocery List
     - Show me my grocery list, please?
+    - What's on my grocery list?
+
+- intent: ask_for_calories
+  examples: |
+    - How many calories does [lasagna](requested_recipe) have?
+    - How many calories do [Avocado salad](requested_recipe) have?
+    - How many calories are there in [salad](requested_recipe)?
+    - How much calories does [pizza](requested_recipe) have?
+    - What's the calorie info on [duck](requested_recipe)

@@ -16,8 +16,6 @@ stories:
   - intent: send_per_mail
   - action: action_send_grocerylist
 
-
-
 - story: sad path 1
   steps:
   - intent: greet
@@ -74,3 +72,9 @@ stories:
   - intent: request_meal_plan
   - action: meal_plan_form
   - active_loop: meal_plan_form
+
+- story: ask for calories
+  steps:
+  - intent: ask_for_calories
+  - action: calories_form
+  - active_loop: calories_form

@@ -16,7 +16,7 @@ import json
 # Dummy grocery list
 GROCERY_ITEM_DB = ["milk", "butter", "coffee"]
 RECIPE_DB = ["lasagna"]
-UNIT_DB = ["liter","liters", "package", "packages", "gram","grams", "kilogram","kilograms"]
+UNIT_DB = ["liter","liters", "package", "packages", "gram","grams", "kilogram","kilograms", ""]
 
 class ValidateGroceryForm(FormValidationAction):
     """
@@ -137,6 +137,24 @@ class ValidateMealPlanForm(FormValidationAction):
     ) -> Dict[Text, Any]:
 
         return {"diet": slot_value}
+
+class ValidateCaloriesForm(FormValidationAction):
+    """
+    Action used in Forms in order to validate the slots.
+    """
+
+    def name(self) -> Text:
+        return "validate_calories_form"
+
+    def validate_recipe_calories(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+
+        return {"recipe_calories": slot_value}
 
 
 class AddItemsToGroceryList(Action):
@@ -529,3 +547,59 @@ class ReadMealPlan(Action):
         
         dispatcher.utter_message(text=meal_plan)
         return []
+
+class InformCalories(Action):
+    def name(self) -> Text:
+        return "inform_calories"
+
+    async def run(
+        self,
+        dispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+
+        url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search"
+        slot_value=tracker.get_slot("recipe_calories")
+        if isinstance(slot_value, list):
+            slot_value = slot_value[0]
+            
+        querystring = {"query":slot_value,"number":"1","type":"main course"}
+
+        headers = {
+            'x-rapidapi-key': "b792f6ab4fmshfdfe21f7bc6866dp145eedjsnb54fbbf7d1bc",
+            'x-rapidapi-host': "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+            }
+
+        response = requests.request("GET", url, headers=headers, params=querystring)
+
+        print(response.text)
+        print("\n\n")
+
+        response_dic = response.json()
+
+        print(response_dic["totalResults"])
+        n_results = response_dic["totalResults"]
+
+        if n_results == 0:
+            dispatcher.utter_message("Sorry, I didn't find any calorie info for " + str(slot_value) + ".")
+        else:
+            id = response_dic["results"][0]["id"]
+            url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/" + str(id) + "/nutritionWidget.json"
+
+            headers = {
+                'x-rapidapi-key': "b792f6ab4fmshfdfe21f7bc6866dp145eedjsnb54fbbf7d1bc",
+                'x-rapidapi-host': "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+                }
+
+            response = requests.request("GET", url, headers=headers)
+            print(response.text)
+            print("\n\n")
+
+            response_dic = response.json()
+
+            dispatcher.utter_message("A general recipe for " + str(slot_value) + " has around " + response_dic["calories"] + " per serving.")
+
+        return [
+            SlotSet("recipe_calories", None),
+        ]

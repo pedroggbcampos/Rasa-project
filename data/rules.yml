@@ -17,6 +17,16 @@ rules:
     - requested_slot: null
   - action: action_grocery_item_added
 
+- rule: End of calories form
+  condition:
+  - active_loop: calories_form
+  steps:
+  - action: calories_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: inform_calories
+
 - rule: End of recipe form
   condition:
   - active_loop: recipe_form
@@ -81,7 +91,6 @@ rules:
   - action: action_give_ingredients
   - action: utter_ask_add_list
 
-
 - rule: ending
   steps:
   - action: action_give_instructions
@@ -96,3 +105,8 @@ rules:
   - intent: ask_instructions
   - action: action_give_instructions
   - action: utter_want_ingredients
+
+- rule: Ask the user to rephrase whenever they send a message with low NLU confidence
+  steps:
+  - intent: nlu_fallback
+  - action: utter_please_rephrase
