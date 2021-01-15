@@ -193,8 +193,14 @@ class AddItemsToGroceryList(Action):
 
             grocery_item = concatItems
 
+        exists = False
         if grocery_item is not None and number is not None and unit is not None:
-            grocery_list.append({"grocery_item": grocery_item, "amount": number, "unit": unit})
+            for entry in grocery_list:
+                if entry["grocery_item"] == grocery_item and entry["unit"] == unit:
+                    entry["amount"] = str(int(entry["amount"]) + int(number))
+                    exists = True
+            if not exists:
+                grocery_list.append({"grocery_item": grocery_item, "amount": number, "unit": unit})
 
         if len(grocery_list) > 0:
             dispatcher.utter_message(
@@ -235,7 +241,10 @@ class TellGroceryList(Action):
 
         text = "The items in your grocery list are:\n"
         for item in grocery_list:
-            text += str(item["amount"]) + " " + str(item["unit"]) + " " + str(item["grocery_item"]) + "\n"
+            if str(item["unit"]) == "":
+                text += str(item["amount"]) + " " + str(item["grocery_item"]) + "\n"
+            else:
+                text += str(item["amount"]) + " " + str(item["unit"]) + " " + str(item["grocery_item"]) + "\n"
         # text += "Have a nice day!"
         dispatcher.utter_message(text=text)
         return []
