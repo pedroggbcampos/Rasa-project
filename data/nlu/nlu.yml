@@ -203,11 +203,12 @@ nlu:
   examples: |
     - Can you show me my grocery list?
     - What is in my grocery list?
-    - Show me my grocery List
+    - Show me the grocery List
     - Show me my grocery list, please?
     - What's on my grocery list?
+    - What's on the grocery list?
     - Can you tell me my grocery list?
-    - Can you read my grocery list to me? 
+    - Can you read the grocery list? 
 
 - intent: ask_for_calories
   examples: |
