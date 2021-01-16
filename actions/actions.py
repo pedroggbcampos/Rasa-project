@@ -388,9 +388,9 @@ class choose_recipe(Action):
                 payload="/inform{\"id_recipe\":\""+str(id)+"\"}"
                 print(payload)
                 buttons.append({"title": name, "payload": payload})
-            dispatcher.utter_message(text="Choose between these choice (Choose the name of the recipe)",buttons=buttons)
+            dispatcher.utter_message(text="Choose between these choices (Click on the name of the recipe)",buttons=buttons)
 
-            print("recipe result {}".format(tracker.get_slot("id_recipe")))
+            #print("recipe result {}".format(tracker.get_slot("id_recipe")))
         return []
 
 
