@@ -194,7 +194,7 @@ responses:
   - text: "Sorry but I didn't find any recipes for {recipe}, do you want another recipe?"
 
   utter_please_rephrase:
-  - text: I'm sorry, I didn't quite understand that. Could you rephrase?
+  - text: I'm sorry, I didn't quite understand that.
 
   utter_default:
   - text: Sorry I didn't get that. Can you rephrase?
