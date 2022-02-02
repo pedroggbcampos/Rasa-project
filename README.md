@@ -90,13 +90,12 @@ $ rasa shell
 
 ## Features
 List of ready features:
-* Awesome feature 1
-* Awesome feature 2
-* Awesome feature 3
+* Searching for specific recipes and provide the necessary ingredients, cooking instructions or nutritional information about the meal
+* Keeping a grocery list which you can use to store single ingredients of your choice or all ingredients from a certain recipe.
+* Generating a personalized weekly meal plan which includes dietary restrictions.
 
 To-do list:
-* Wow improvement to be done 1
-* Wow improvement to be done 2
+* Done
 
 ## Status
-Project is: _in progress_
+Project is: _finished_
