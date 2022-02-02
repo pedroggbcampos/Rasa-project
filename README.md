@@ -94,8 +94,5 @@ List of ready features:
 * Keeping a grocery list which you can use to store single ingredients of your choice or all ingredients from a certain recipe.
 * Generating a personalized weekly meal plan which includes dietary restrictions.
 
-To-do list:
-* Done
-
 ## Status
 Project is: _finished_
